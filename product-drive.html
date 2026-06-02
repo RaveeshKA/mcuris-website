@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mCuris Drive — mCuris</title>
+  <meta name="description" content="mCuris Drive — The ambulance crew's app. Patient transport, en-route vitals, and pre-arrival brief — part of the connected mCuris clinical ecosystem." />
+  <link rel="icon" type="image/png" href="assets/mcuris-mark.png" />
+  <link rel="stylesheet" href="shared/colors_and_type.css" />
+  <link rel="stylesheet" href="shared/site.css" />
+  <style>
+    @media (max-width: 960px) {
+      .prod-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared/icons.jsx"></script>
+  <script type="text/babel" src="shared/ui.jsx"></script>
+  <script type="text/babel" src="shared/products.jsx"></script>
+  <script type="text/babel" src="shared/AppDownload.jsx"></script>
+  <script type="text/babel" src="shared/product-details.jsx"></script>
+  <script type="text/babel" src="shared/Layout.jsx"></script>
+  <script type="text/babel" src="shared/ChartPreview.jsx"></script>
+  <script type="text/babel" src="landing/MyCarePhone.jsx"></script>
+  <script type="text/babel" src="landing/EcosystemDiagram.jsx"></script>
+  <script type="text/babel" src="landing/Sections.jsx"></script>
+  <script type="text/babel" src="shared/ProductPage.jsx"></script>
+
+  <script type="text/babel">
+    ReactDOM.createRoot(document.getElementById("root")).render(<ProductPage id="drive" />);
+  </script>
+</body>
+</html>

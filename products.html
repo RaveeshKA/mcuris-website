@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products — mCuris</title>
+  <meta name="description" content="Seven surfaces, one chart. The mCuris ecosystem: Consult, MyCare, Telemedicine, Lab, Pharmacy, Blood Bank, and Drive." />
+  <link rel="icon" type="image/png" href="assets/mcuris-mark.png" />
+  <link rel="stylesheet" href="shared/colors_and_type.css" />
+  <link rel="stylesheet" href="shared/site.css" />
+  <style>
+    @media (max-width: 980px) {
+      .products-grid { grid-template-columns: 1fr !important; }
+      .ecosystem-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared/icons.jsx"></script>
+  <script type="text/babel" src="shared/ui.jsx"></script>
+  <script type="text/babel" src="shared/products.jsx"></script>
+  <script type="text/babel" src="shared/AppDownload.jsx"></script>
+  <script type="text/babel" src="shared/Layout.jsx"></script>
+  <script type="text/babel" src="shared/ChartPreview.jsx"></script>
+  <script type="text/babel" src="landing/MyCarePhone.jsx"></script>
+  <script type="text/babel" src="landing/EcosystemDiagram.jsx"></script>
+  <script type="text/babel" src="landing/Sections.jsx"></script>
+
+  <script type="text/babel">
+    function ProductsHero() {
+      return (
+        <section className="page-hero">
+          <div className="shell">
+            <LpEyebrow>The connected clinical ecosystem</LpEyebrow>
+            <h1>Seven apps. One chart. One source of truth.</h1>
+            <p>
+              Each surface in mCuris does one job well — and shares state with the other six in real time. Tap any node to see how it talks to the rest.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function EcosystemBlock() {
+      return (
+        <section className="section">
+          <div className="shell">
+            <div style={{
+              display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.05fr)",
+              gap: 56, alignItems: "center",
+            }} className="ecosystem-grid">
+              <div>
+                <LpEyebrow>One platform</LpEyebrow>
+                <h2 className="ds-h2" style={{ margin: "16px 0 16px", fontSize: "clamp(28px, 3.6vw, 40px)" }}>
+                  Tap a node — see what it reaches.
+                </h2>
+                <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--fg-2)" }}>
+                  Every surface is a peer in the same network, not a satellite of a central EMR. A cross-match request in Consult flows to Blood Bank, queues meds in Pharmacy, hands off to Drive for delivery, and surfaces in MyCare as a plain-language update the patient can read — all without a job queue or a nightly batch.
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: "24px 0 0", display: "flex", flexDirection: "column", gap: 12 }}>
+                  {[
+                    "Event-driven — every change publishes to subscribers in milliseconds",
+                    "FHIR-native — every entity has a standards-mapped representation",
+                    "Tenant-isolated — your data, your tenant, your audit log",
+                  ].map(c => (
+                    <li key={c} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14.5, color: "var(--fg-1)" }}>
+                      <LpIcon name="check" size={16} color="var(--brand-teal-600)" strokeWidth={2.2} />
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <EcosystemDiagram size={620} />
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function ProductsGrid() {
+      return (
+        <section className="section" style={{ background: "var(--bg-app)", borderTop: "1px solid var(--border-subtle)" }}>
+          <div className="shell">
+            <LpSectionHead
+              eyebrow="The seven surfaces"
+              title="Everything in the ecosystem."
+            />
+            <div style={{
+              marginTop: 56,
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gap: 20,
+            }} className="products-grid">
+              {PRODUCTS.map(p => (
+                <a key={p.id} href={p.href} style={{
+                  display: "flex", flexDirection: "column",
+                  padding: 28, borderRadius: 16,
+                  background: "#fff",
+                  border: "1px solid var(--border-subtle)",
+                  textDecoration: "none",
+                  transition: "all 180ms var(--ease-standard)",
+                  position: "relative", overflow: "hidden",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--brand-deep-blue-200)"; e.currentTarget.style.boxShadow = "var(--shadow-md)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-subtle)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "translateY(0)"; }}>
+                  {/* Circuit trace decoration */}
+                  <svg aria-hidden style={{ position: "absolute", top: 0, right: 0, width: 120, height: 120, opacity: 0.5 }} viewBox="0 0 120 120" fill="none">
+                    <g stroke={p.accent === "teal" ? "#2EC4B6" : "#1E4E8F"} strokeWidth="0.7" opacity="0.4">
+                      <path d="M120 30 L80 30 L80 60 L40 60" />
+                      <circle cx="40" cy="60" r="3" fill="#fff" stroke={p.accent === "teal" ? "#2EC4B6" : "#1E4E8F"} />
+                      <path d="M120 80 L95 80 L95 100 L70 100" />
+                      <circle cx="70" cy="100" r="3" fill="#fff" stroke={p.accent === "teal" ? "#2EC4B6" : "#1E4E8F"} />
+                    </g>
+                  </svg>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+                    <span style={{
+                      width: 52, height: 52, borderRadius: 12,
+                      background: "var(--brand-gradient-soft)",
+                      color: p.accent === "teal" ? "var(--brand-teal-700)" : "var(--brand-deep-blue)",
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    }}>
+                      <LpIcon name={p.icon} size={26} />
+                    </span>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: p.accent === "teal" ? "var(--brand-teal-700)" : "var(--brand-deep-blue)" }}>
+                        {p.short}
+                      </div>
+                      <div style={{ fontSize: 19, fontWeight: 800, color: "var(--fg-1)", letterSpacing: "-0.01em", marginTop: 2 }}>
+                        {p.name}
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 17, fontWeight: 700, color: "var(--fg-1)", marginBottom: 6, letterSpacing: "-0.005em" }}>
+                    {p.one_liner}
+                  </div>
+                  <p style={{ margin: "0 0 18px", fontSize: 14, lineHeight: 1.55, color: "var(--fg-2)" }}>
+                    {p.blurb}
+                  </p>
+                  <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 6 }}>
+                    {p.features.map(f => (
+                      <li key={f} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "var(--fg-2)" }}>
+                        <span className="circuit-dot" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{ marginTop: "auto", paddingTop: 24, display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, color: "var(--brand-deep-blue)" }}>
+                    Tour {p.name.replace("mCuris ", "")}
+                    <LpIcon name="arrowRight" size={14} />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <SiteNav active="products" />
+          <main>
+            <ProductsHero />
+            <EcosystemBlock />
+            <ProductsGrid />
+            <CtaBanner />
+          </main>
+          <SiteFooter />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — mCuris</title>
+  <meta name="description" content="Pricing for solo practices, multi-site groups, and health systems. Built around what you actually use." />
+  <link rel="icon" type="image/png" href="assets/mcuris-mark.png" />
+  <link rel="stylesheet" href="shared/colors_and_type.css" />
+  <link rel="stylesheet" href="shared/site.css" />
+  <style>
+    @media (max-width: 980px) {
+      .pricing-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+      .compare-table { font-size: 13px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared/icons.jsx"></script>
+  <script type="text/babel" src="shared/ui.jsx"></script>
+  <script type="text/babel" src="shared/products.jsx"></script>
+  <script type="text/babel" src="shared/AppDownload.jsx"></script>
+  <script type="text/babel" src="shared/Layout.jsx"></script>
+  <script type="text/babel" src="landing/MyCarePhone.jsx"></script>
+  <script type="text/babel" src="landing/EcosystemDiagram.jsx"></script>
+  <script type="text/babel" src="shared/ChartPreview.jsx"></script>
+  <script type="text/babel" src="landing/Sections.jsx"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function PriceHero() {
+      return (
+        <section className="page-hero">
+          <div className="shell">
+            <LpEyebrow>Pricing</LpEyebrow>
+            <h1>Built around what you actually use.</h1>
+            <p>
+              Three tiers, transparent line items. Implementation, BAA, and the patient app are always included. Talk to us about what you actually need — we don't bundle features you'll never touch.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function Tiers() {
+      const tiers = [
+        {
+          name: "Practice",
+          tagline: "Solo and small clinics.",
+          priceLine: "Talk to us",
+          priceSub: "Per provider, monthly",
+          accent: "border",
+          includes: [
+            "mCuris Consult (chart + orders)",
+            "mCuris MyCare patient app",
+            "mCuris Pharmacy or Lab — pick one",
+            "Up to 5 clinicians",
+            "Standard onboarding",
+            "Email support, business hours",
+          ],
+          excludes: [
+            "Blood Bank · not applicable",
+            "Drive (routing)",
+            "Multi-site analytics",
+          ],
+        },
+        {
+          name: "Group",
+          tagline: "Multi-site practices and ambulatory networks.",
+          priceLine: "Talk to us",
+          priceSub: "Per clinician, monthly",
+          highlighted: true,
+          includes: [
+            "Everything in Practice",
+            "All seven surfaces enabled",
+            "Up to 12 sites",
+            "Standard ecosystem hand-offs",
+            "Implementation + clinical informatics partner",
+            "Email + chat support, extended hours",
+            "Quarterly business reviews",
+          ],
+          excludes: [
+            "24×7 on-call",
+            "Custom HL7 integrations",
+          ],
+        },
+        {
+          name: "Health System",
+          tagline: "Hospitals and integrated delivery networks.",
+          priceLine: "Custom",
+          priceSub: "Contract — see below",
+          includes: [
+            "Everything in Group",
+            "Unlimited sites",
+            "24×7 on-call, named technical account manager",
+            "Single-tenant dedicated cluster (optional)",
+            "Custom HL7 integrations (analyzers, ADT, billing)",
+            "HITRUST roadmap support",
+            "Clinical informatics + change-management partnership",
+          ],
+          excludes: [],
+        },
+      ];
+      return (
+        <section className="section">
+          <div className="shell">
+            <div style={{
+              display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20,
+              alignItems: "stretch",
+            }} className="pricing-grid">
+              {tiers.map(t => (
+                <div key={t.name} style={{
+                  padding: 32, borderRadius: 16,
+                  background: t.highlighted ? "radial-gradient(ellipse at 20% 0%, #1E4E8F 0%, #14335C 50%, #0F2643 100%)" : "#fff",
+                  color: t.highlighted ? "#fff" : "var(--fg-1)",
+                  border: t.highlighted ? "1px solid var(--brand-deep-blue-700)" : "1px solid var(--border-subtle)",
+                  boxShadow: t.highlighted ? "0 24px 48px -12px rgba(15,38,67,0.32)" : "none",
+                  position: "relative", overflow: "hidden",
+                  display: "flex", flexDirection: "column",
+                }}>
+                  {t.highlighted && (
+                    <span style={{
+                      position: "absolute", top: 24, right: 24,
+                      padding: "4px 10px", borderRadius: 999,
+                      fontSize: 10, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase",
+                      background: "var(--brand-teal)", color: "#0F2643",
+                    }}>Most chosen</span>
+                  )}
+                  {t.highlighted && (
+                    <svg aria-hidden style={{ position: "absolute", top: 0, right: 0, width: 180, height: 180, opacity: 0.16 }} viewBox="0 0 180 180" fill="none">
+                      <g stroke="#2EC4B6" strokeWidth="0.8">
+                        <path d="M180 40 L130 40 L130 80 L80 80" />
+                        <circle cx="80" cy="80" r="3" fill="#2EC4B6" />
+                        <path d="M180 120 L140 120 L140 150 L100 150" />
+                        <circle cx="100" cy="150" r="3" fill="#2EC4B6" />
+                      </g>
+                    </svg>
+                  )}
+                  <div style={{ position: "relative" }}>
+                    <div style={{
+                      fontSize: 11, fontWeight: 800, letterSpacing: "0.10em", textTransform: "uppercase",
+                      color: t.highlighted ? "var(--brand-teal-300)" : "var(--brand-teal-700)",
+                    }}>
+                      {t.name}
+                    </div>
+                    <div style={{ fontSize: 17, fontWeight: 600, color: t.highlighted ? "rgba(255,255,255,0.85)" : "var(--fg-2)", marginTop: 6 }}>
+                      {t.tagline}
+                    </div>
+                    <div style={{
+                      marginTop: 24, fontFamily: "var(--font-display)", fontWeight: 800,
+                      fontSize: 40, letterSpacing: "-0.02em", lineHeight: 1,
+                      color: t.highlighted ? "#fff" : "var(--fg-1)",
+                    }}>
+                      {t.priceLine}
+                    </div>
+                    <div style={{ fontSize: 13, color: t.highlighted ? "rgba(255,255,255,0.65)" : "var(--fg-3)", marginTop: 6 }}>
+                      {t.priceSub}
+                    </div>
+                    <a href="contact.html" className={`btn ${t.highlighted ? "btn-accent" : "btn-primary"}`} style={{
+                      marginTop: 24, width: "100%", justifyContent: "center",
+                    }}>
+                      Talk to us
+                      <LpIcon name="arrowRight" size={14} />
+                    </a>
+                    <ul style={{ listStyle: "none", padding: 0, margin: "28px 0 0", display: "flex", flexDirection: "column", gap: 10 }}>
+                      {t.includes.map(f => (
+                        <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 14, color: t.highlighted ? "rgba(255,255,255,0.92)" : "var(--fg-1)" }}>
+                          <LpIcon name="check" size={15} color={t.highlighted ? "var(--brand-teal-300)" : "var(--brand-teal-600)"} strokeWidth={2.4} />
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {t.excludes.length > 0 && (
+                      <ul style={{ listStyle: "none", padding: 0, margin: "16px 0 0", display: "flex", flexDirection: "column", gap: 10, opacity: 0.55 }}>
+                        {t.excludes.map(f => (
+                          <li key={f} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 13, color: t.highlighted ? "rgba(255,255,255,0.7)" : "var(--fg-3)" }}>
+                            <LpIcon name="minus" size={15} color={t.highlighted ? "rgba(255,255,255,0.5)" : "var(--fg-4)"} strokeWidth={2.4} />
+                            <span>{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{
+              marginTop: 32, padding: "20px 24px",
+              border: "1px dashed var(--border-default)", borderRadius: 12,
+              display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap",
+            }}>
+              <LpIcon name="info" size={20} color="var(--brand-deep-blue)" />
+              <div style={{ flex: 1, minWidth: 240 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "var(--fg-1)" }}>Always included, every tier</div>
+                <div style={{ fontSize: 13.5, color: "var(--fg-2)", marginTop: 2 }}>
+                  Signed BAA · mCuris MyCare for your patients · implementation kickoff · sandbox tenant · audit log export.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function CompareSection() {
+      const rows = [
+        { area: "Clinical surface",  feature: "Consult — chart, orders, notes",   p: "✓", g: "✓", e: "✓" },
+        { area: "Clinical surface",  feature: "AI chart summary",                  p: "Add-on", g: "✓", e: "✓" },
+        { area: "Clinical surface",  feature: "Voice-to-note dictation",           p: "Add-on", g: "✓", e: "✓" },
+        { area: "Patient",           feature: "MyCare iOS / Android / Web",        p: "✓", g: "✓", e: "✓" },
+        { area: "Patient",           feature: "Family / caregiver proxy access",   p: "✓", g: "✓", e: "✓" },
+        { area: "Lab",               feature: "Lab workbench",                     p: "Pick one", g: "✓", e: "✓" },
+        { area: "Pharmacy",          feature: "Med reconciliation + e-prescribing",p: "Pick one", g: "✓", e: "✓" },
+        { area: "Blood Bank",       feature: "Inventory + cross-match",          p: "—",  g: "✓", e: "✓" },
+        { area: "Logistics",         feature: "Drive (routing)",                   p: "—",  g: "✓", e: "✓" },
+        { area: "Integration",       feature: "FHIR & HL7 inbound/outbound",       p: "Standard", g: "Standard", e: "Custom" },
+        { area: "Integration",       feature: "Custom HL7 / analyzer integration", p: "—",  g: "Add-on", e: "✓" },
+        { area: "Hosting",           feature: "Multi-tenant US region",            p: "✓", g: "✓", e: "✓" },
+        { area: "Hosting",           feature: "Single-tenant dedicated cluster",   p: "—",  g: "—", e: "Optional" },
+        { area: "Support",           feature: "Business-hours support",            p: "Email", g: "Email + chat", e: "24×7" },
+        { area: "Support",           feature: "Named technical account manager",   p: "—",  g: "—", e: "✓" },
+        { area: "Trust",             feature: "Signed BAA",                        p: "✓", g: "✓", e: "✓" },
+        { area: "Trust",             feature: "HITRUST roadmap support",           p: "—",  g: "—", e: "✓" },
+      ];
+      const cell = (val) => {
+        if (val === "✓") return <LpIcon name="check" size={16} color="var(--brand-teal-600)" strokeWidth={2.4} />;
+        if (val === "—") return <span style={{ color: "var(--fg-4)" }}>—</span>;
+        return <span style={{ fontSize: 12.5, color: "var(--fg-2)" }}>{val}</span>;
+      };
+      return (
+        <section className="section" style={{ background: "var(--bg-app)", borderTop: "1px solid var(--border-subtle)" }}>
+          <div className="shell">
+            <LpSectionHead
+              eyebrow="Side by side"
+              title="Compare tiers."
+            />
+            <div style={{
+              marginTop: 40,
+              background: "#fff", border: "1px solid var(--border-subtle)",
+              borderRadius: 14, overflow: "hidden",
+            }}>
+              <table className="compare-table" style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+                <thead>
+                  <tr style={{ background: "var(--bg-surface-2)", borderBottom: "1px solid var(--border-subtle)" }}>
+                    <th style={{ textAlign: "left", padding: "16px 20px", fontWeight: 700, color: "var(--fg-3)", fontSize: 11, letterSpacing: "0.06em", textTransform: "uppercase" }}>Feature</th>
+                    <th style={{ textAlign: "center", padding: "16px 12px", fontWeight: 800, color: "var(--fg-1)" }}>Practice</th>
+                    <th style={{ textAlign: "center", padding: "16px 12px", fontWeight: 800, color: "var(--brand-deep-blue)", background: "var(--brand-deep-blue-50)" }}>Group</th>
+                    <th style={{ textAlign: "center", padding: "16px 12px", fontWeight: 800, color: "var(--fg-1)" }}>Health System</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((r, i) => (
+                    <tr key={r.feature} style={{ borderTop: i === 0 ? "none" : "1px solid var(--border-subtle)" }}>
+                      <td style={{ padding: "14px 20px", color: "var(--fg-1)" }}>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: "var(--fg-3)", letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: 2 }}>{r.area}</div>
+                        <div style={{ fontSize: 14, fontWeight: 600, color: "var(--fg-1)" }}>{r.feature}</div>
+                      </td>
+                      <td style={{ padding: "14px 12px", textAlign: "center" }}>{cell(r.p)}</td>
+                      <td style={{ padding: "14px 12px", textAlign: "center", background: "var(--brand-deep-blue-50)" }}>{cell(r.g)}</td>
+                      <td style={{ padding: "14px 12px", textAlign: "center" }}>{cell(r.e)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function PricingFAQ() {
+      const [open, setOpen] = useState(0);
+      const items = [
+        { q: "Why don't you list per-provider prices on the page?",
+          a: "Because the right number depends on what surfaces you turn on, how many sites you operate, and what integrations you need. Our sales conversations are short and honest — we'd rather build the quote with you than list a price that doesn't match what you'll actually pay." },
+        { q: "Are there implementation fees?",
+          a: "Implementation kickoff is included in every tier. If you need a custom HL7 integration, a migration from a legacy EMR, or change-management consulting at scale, those are separate engagements priced per scope." },
+        { q: "What does it cost to migrate from our current EMR?",
+          a: "Depends on the source system and how much history you want to bring forward. We've done five-figure migrations and six-figure ones. We'll scope it before you sign." },
+        { q: "Do you charge for the patient app (MyCare)?",
+          a: "No. MyCare is free to your patients and included in every tier — we believe putting a paywall between a patient and their own record is wrong." },
+        { q: "Is there a free trial?",
+          a: "We don't do open trials on production clinical software — there's too much that depends on a real configuration. We do offer a sandbox tenant during evaluation so your team can click around freely." },
+        { q: "Can we self-host?",
+          a: "Health-system tier supports a single-tenant dedicated cluster running in a region of your choice. On-prem isn't supported — modern healthcare software benefits from being centrally maintained." },
+      ];
+      return (
+        <section className="section">
+          <div className="shell-narrow">
+            <LpSectionHead
+              eyebrow="Pricing questions"
+              title="What everyone asks."
+            />
+            <div style={{ marginTop: 40, display: "flex", flexDirection: "column", gap: 8 }}>
+              {items.map((f, i) => (
+                <div key={f.q} style={{
+                  background: "#fff", border: "1px solid var(--border-subtle)",
+                  borderRadius: 12, overflow: "hidden",
+                }}>
+                  <button
+                    onClick={() => setOpen(open === i ? -1 : i)}
+                    style={{
+                      width: "100%", textAlign: "left",
+                      display: "flex", alignItems: "center", gap: 16,
+                      padding: "20px 24px",
+                      background: "transparent", border: 0, cursor: "pointer", fontFamily: "var(--font-sans)",
+                    }}>
+                    <span style={{ flex: 1, fontSize: 16, fontWeight: 700, color: "var(--fg-1)" }}>{f.q}</span>
+                    <span style={{
+                      width: 28, height: 28, borderRadius: 8,
+                      background: open === i ? "var(--brand-deep-blue)" : "var(--bg-surface-sunken)",
+                      color: open === i ? "#fff" : "var(--brand-deep-blue)",
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      transition: "all 180ms", transform: open === i ? "rotate(45deg)" : "rotate(0deg)",
+                    }}>
+                      <LpIcon name="plus" size={14} strokeWidth={2.5} />
+                    </span>
+                  </button>
+                  {open === i && (
+                    <div style={{ padding: "0 24px 22px", fontSize: 15, lineHeight: 1.65, color: "var(--fg-2)", textWrap: "pretty" }}>
+                      {f.a}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <SiteNav active="pricing" />
+          <main>
+            <PriceHero />
+            <Tiers />
+            <CompareSection />
+            <PricingFAQ />
+            <CtaBanner />
+          </main>
+          <SiteFooter />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

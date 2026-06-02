@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security & compliance — mCuris</title>
+  <meta name="description" content="HIPAA, encryption, audit, BAAs. How mCuris keeps patient data safe." />
+  <link rel="icon" type="image/png" href="assets/mcuris-mark.png" />
+  <link rel="stylesheet" href="shared/colors_and_type.css" />
+  <link rel="stylesheet" href="shared/site.css" />
+  <style>
+    @media (max-width: 900px) {
+      .sec-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .sec-side-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared/icons.jsx"></script>
+  <script type="text/babel" src="shared/ui.jsx"></script>
+  <script type="text/babel" src="shared/products.jsx"></script>
+  <script type="text/babel" src="shared/AppDownload.jsx"></script>
+  <script type="text/babel" src="shared/Layout.jsx"></script>
+  <script type="text/babel" src="landing/MyCarePhone.jsx"></script>
+  <script type="text/babel" src="landing/EcosystemDiagram.jsx"></script>
+  <script type="text/babel" src="shared/ChartPreview.jsx"></script>
+  <script type="text/babel" src="landing/Sections.jsx"></script>
+
+  <script type="text/babel">
+    function SecHero() {
+      return (
+        <section className="page-hero">
+          <div className="shell">
+            <LpEyebrow>Security & compliance</LpEyebrow>
+            <h1>Patient data is not a feature flag.</h1>
+            <p>
+              Every record in mCuris is encrypted in transit and at rest. Every access is logged. Every tenant is isolated. Here's what we do, and how to verify it.
+            </p>
+            <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 12 }}>
+              <a href="#hipaa" className="btn btn-secondary btn-sm">
+                <LpIcon name="shieldCheck" size={14} />
+                HIPAA
+              </a>
+              <a href="#encryption" className="btn btn-secondary btn-sm">
+                <LpIcon name="lock" size={14} />
+                Encryption
+              </a>
+              <a href="#privacy" className="btn btn-secondary btn-sm">
+                <LpIcon name="fileText" size={14} />
+                Privacy
+              </a>
+              <a href="#terms" className="btn btn-secondary btn-sm">
+                <LpIcon name="fileText" size={14} />
+                Terms
+              </a>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function PostureGrid() {
+      const items = [
+        { l: "HIPAA Privacy & Security",   v: "Aligned",          tone: "ok",       sub: "BAA available on day one" },
+        { l: "SOC 2 Type II",              v: "In progress",      tone: "progress", sub: "Targeting completion 2026" },
+        { l: "HITRUST CSF",                v: "Roadmap · 2026",   tone: "future",   sub: "Self-assessment underway" },
+        { l: "ISO/IEC 27001",              v: "Evaluating",       tone: "future",   sub: "Gap analysis Q3 2026" },
+        { l: "Data residency",             v: "US (multi-AZ)",    tone: "neutral",  sub: "EU region on request" },
+        { l: "Encryption at rest",         v: "AES-256",          tone: "ok",       sub: "Per-tenant key wrap" },
+        { l: "Encryption in transit",      v: "TLS 1.3",          tone: "ok",       sub: "HSTS preload, no TLS 1.0/1.1" },
+        { l: "Penetration testing",        v: "Quarterly",        tone: "ok",       sub: "Third-party, results on request" },
+      ];
+      const toneColor = (tone) => ({
+        ok:       { bg: "var(--status-ok-bg)",        fg: "var(--status-ok-fg)" },
+        progress: { bg: "var(--status-warn-bg)",      fg: "var(--status-warn-fg)" },
+        future:   { bg: "var(--bg-surface-sunken)",   fg: "var(--fg-3)" },
+        neutral:  { bg: "var(--brand-deep-blue-50)",  fg: "var(--brand-deep-blue-700)" },
+      }[tone]);
+      return (
+        <section className="section">
+          <div className="shell">
+            <LpSectionHead
+              eyebrow="Compliance posture"
+              title="Where we stand today."
+              lede="A health-software vendor's job is to be specific. So we are."
+            />
+            <div style={{
+              marginTop: 40,
+              display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 12,
+            }}>
+              {items.map(it => {
+                const c = toneColor(it.tone);
+                return (
+                  <div key={it.l} style={{
+                    padding: 20, borderRadius: 12,
+                    background: "#fff", border: "1px solid var(--border-subtle)",
+                  }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 8 }}>
+                      <div style={{ fontSize: 14, fontWeight: 700, color: "var(--fg-1)" }}>{it.l}</div>
+                      <span style={{
+                        padding: "3px 9px", borderRadius: 999,
+                        fontSize: 11, fontWeight: 800, letterSpacing: "0.04em",
+                        background: c.bg, color: c.fg,
+                      }}>{it.v}</span>
+                    </div>
+                    <div style={{ fontSize: 12.5, color: "var(--fg-3)" }}>{it.sub}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function HipaaSection() {
+      const safeguards = [
+        { icon: "user",      title: "Administrative",
+          body: "Workforce training, role-based access, sanction policy, security officer designated and named." },
+        { icon: "shieldCheck", title: "Physical",
+          body: "Hosted in SOC 2-certified facilities. No on-prem PHI storage. Facility access tied to identity provider." },
+        { icon: "lock",      title: "Technical",
+          body: "Encryption, audit log, automatic session timeout, integrity controls on every PHI write." },
+      ];
+      return (
+        <section className="section" id="hipaa" style={{ background: "var(--bg-app)", borderTop: "1px solid var(--border-subtle)" }}>
+          <div className="shell">
+            <LpSectionHead
+              eyebrow="HIPAA notice"
+              title="How we meet the Privacy & Security Rules."
+              lede="mCuris operates as a Business Associate under HIPAA. A signed BAA is part of every customer contract — it's not a paid add-on, and it's not negotiable."
+            />
+            <div style={{
+              marginTop: 48,
+              display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16,
+            }}>
+              {safeguards.map(s => (
+                <div key={s.title} className="card">
+                  <span style={{
+                    width: 44, height: 44, borderRadius: 10,
+                    background: "var(--brand-gradient-soft)",
+                    color: "var(--brand-deep-blue)",
+                    display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    marginBottom: 16,
+                  }}>
+                    <LpIcon name={s.icon} size={22} />
+                  </span>
+                  <h3 className="ds-h5" style={{ margin: "0 0 8px", fontSize: 18 }}>{s.title} safeguards</h3>
+                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.55, color: "var(--fg-2)" }}>{s.body}</p>
+                </div>
+              ))}
+            </div>
+            <div style={{
+              marginTop: 32, padding: 24, borderRadius: 12,
+              background: "#fff", border: "1px solid var(--border-subtle)",
+              display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap",
+            }}>
+              <LpIcon name="fileText" size={20} color="var(--brand-deep-blue)" />
+              <div style={{ flex: 1, minWidth: 200 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "var(--fg-1)" }}>HIPAA notice of privacy practices</div>
+                <div style={{ fontSize: 13, color: "var(--fg-3)" }}>The full notice describing how we use and protect PHI is available on request.</div>
+              </div>
+              <a href="mailto:security@mcuris.health" className="btn btn-secondary btn-sm">
+                Request the notice
+                <LpIcon name="arrowRight" size={13} />
+              </a>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function EncryptionSection() {
+      return (
+        <section className="section" id="encryption">
+          <div className="shell">
+            <div style={{
+              display: "grid", gridTemplateColumns: "minmax(0, 1.1fr) minmax(0, 1fr)",
+              gap: 56, alignItems: "center",
+            }} className="sec-grid">
+              <div>
+                <LpEyebrow>Data handling</LpEyebrow>
+                <h2 className="ds-h2" style={{ margin: "16px 0 16px", fontSize: "clamp(28px, 4vw, 40px)" }}>
+                  Encryption, isolation, and audit — by default.
+                </h2>
+                <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--fg-2)" }}>
+                  Every patient record lives in a tenant boundary scoped to your organization. PHI never crosses that boundary, ever. Backups are encrypted with the same per-tenant key wrap. We store enough to operate, and not a byte more.
+                </p>
+                <ul style={{ listStyle: "none", padding: 0, margin: "28px 0 0", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="sec-side-grid">
+                  {[
+                    { l: "AES-256 at rest", s: "Per-tenant key wrap" },
+                    { l: "TLS 1.3 in transit", s: "HSTS preload" },
+                    { l: "Immutable audit log", s: "Every PHI access logged" },
+                    { l: "Tenant isolation", s: "Zero cross-tenant joins" },
+                    { l: "Quarterly pen tests", s: "Third-party verified" },
+                    { l: "Data minimization", s: "We don't keep what we don't need" },
+                  ].map(c => (
+                    <li key={c.l} style={{
+                      padding: "12px 14px", borderRadius: 10,
+                      background: "var(--bg-app)", border: "1px solid var(--border-subtle)",
+                    }}>
+                      <div style={{ fontSize: 13.5, fontWeight: 700, color: "var(--fg-1)", marginBottom: 2 }}>{c.l}</div>
+                      <div style={{ fontSize: 12, color: "var(--fg-3)" }}>{c.s}</div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div style={{
+                padding: 28, borderRadius: 16,
+                background: "radial-gradient(ellipse at 20% 0%, #1E4E8F 0%, #14335C 50%, #0F2643 100%)",
+                color: "#fff", position: "relative", overflow: "hidden",
+              }}>
+                {/* Visual: encrypted flow */}
+                <svg aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.18 }} viewBox="0 0 400 400" fill="none">
+                  <g stroke="#2EC4B6" strokeWidth="0.8">
+                    <path d="M0 80 L120 80 L120 40 L240 40" />
+                    <path d="M0 320 L120 320 L120 360 L240 360" />
+                    <circle cx="240" cy="40" r="3" fill="#2EC4B6" />
+                    <circle cx="240" cy="360" r="3" fill="#2EC4B6" />
+                  </g>
+                </svg>
+                <div style={{ position: "relative" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
+                    <LpIcon name="lock" size={16} color="var(--brand-teal-300)" />
+                    <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.10em", textTransform: "uppercase", color: "var(--brand-teal-300)" }}>Sample audit log</span>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10, fontFamily: "var(--font-mono)", fontSize: 12 }}>
+                    {[
+                      { t: "14:42:01", u: "jpatel@hosp.org", a: "READ chart/40-71-332" },
+                      { t: "14:42:14", u: "jpatel@hosp.org", a: "WRITE order/furosemide-iv" },
+                      { t: "14:42:14", u: "[system]",        a: "INTERACTION_CHECK ok" },
+                      { t: "14:42:15", u: "[system]",        a: "EVENT_PUBLISH consult→pharmacy" },
+                      { t: "14:42:15", u: "[system]",        a: "EVENT_PUBLISH consult→bloodbank" },
+                      { t: "14:42:18", u: "kpark@hosp.org",  a: "READ order/furosemide-iv" },
+                    ].map(row => (
+                      <div key={row.t + row.a} style={{
+                        display: "grid", gridTemplateColumns: "70px 1fr",
+                        gap: 12, padding: "8px 12px", borderRadius: 6,
+                        background: "rgba(255,255,255,0.04)",
+                        borderLeft: "2px solid var(--brand-teal)",
+                      }}>
+                        <span style={{ color: "rgba(255,255,255,0.55)" }}>{row.t}</span>
+                        <div>
+                          <div style={{ color: "rgba(255,255,255,0.95)" }}>{row.a}</div>
+                          <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 11 }}>{row.u}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function LegalSection() {
+      const docs = [
+        { id: "privacy",  icon: "fileText", title: "Privacy policy",
+          body: "What we collect, why, how long, and who can see it. The patient owns their record; mCuris is the steward.", contact: "privacy@mcuris.health" },
+        { id: "terms",    icon: "fileText", title: "Terms of service",
+          body: "How customers and end users may use the platform, and what they should expect from us in return.", contact: "legal@mcuris.health" },
+        { id: "report",   icon: "alert",    title: "Report a vulnerability",
+          body: "Found something? Tell us. We respond within 24 hours and run a coordinated-disclosure program.", contact: "security@mcuris.health" },
+        { id: "dpa",      icon: "shield",   title: "Data Processing Addendum",
+          body: "For customers operating under regional privacy regimes (GDPR, state-level US). Available on contract.", contact: "legal@mcuris.health" },
+      ];
+      return (
+        <section className="section" id="privacy" style={{ background: "var(--bg-app)", borderTop: "1px solid var(--border-subtle)" }}>
+          <div className="shell">
+            <LpSectionHead
+              eyebrow="Privacy & legal"
+              title="The documents."
+              lede="Full text available on request — we're keeping them lean and human-readable while we finalize them for public posting."
+            />
+            <div id="terms" style={{
+              marginTop: 48,
+              display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16,
+            }}>
+              {docs.map(d => (
+                <div key={d.id} id={d.id} className="card">
+                  <span style={{
+                    width: 40, height: 40, borderRadius: 10,
+                    background: "var(--brand-gradient-soft)",
+                    color: "var(--brand-deep-blue)",
+                    display: "inline-flex", alignItems: "center", justifyContent: "center",
+                    marginBottom: 14,
+                  }}>
+                    <LpIcon name={d.icon} size={20} />
+                  </span>
+                  <h3 className="ds-h5" style={{ margin: "0 0 8px", fontSize: 17 }}>{d.title}</h3>
+                  <p style={{ margin: "0 0 14px", fontSize: 14, lineHeight: 1.55, color: "var(--fg-2)" }}>{d.body}</p>
+                  <a href={`mailto:${d.contact}`} style={{
+                    display: "inline-flex", alignItems: "center", gap: 6,
+                    fontSize: 12.5, fontWeight: 700, color: "var(--brand-deep-blue)",
+                    fontFamily: "var(--font-mono)",
+                  }}>
+                    {d.contact}
+                    <LpIcon name="arrowUpRight" size={12} />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <SiteNav active="security" />
+          <main>
+            <SecHero />
+            <PostureGrid />
+            <HipaaSection />
+            <EncryptionSection />
+            <LegalSection />
+            <CtaBanner />
+          </main>
+          <SiteFooter />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

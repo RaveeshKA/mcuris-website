@@ -1,0 +1,375 @@
+/* ============================================================
+   mCuris Design System — Colors & Type
+   ------------------------------------------------------------
+   Source of truth for design tokens. Import this into any
+   prototype, slide, or UI kit before your component CSS.
+
+   Brand: clinical, calm, trustworthy. Deep navy carries
+   gravitas; teal carries motion + life. White space is
+   prescribed: a clinic, not a billboard.
+   ============================================================ */
+
+/* ---- Webfonts ----
+   Mulish: humanist geometric sans — closest open match to the
+   mCuris wordmark (rounded "C", open apertures, even weight).
+   IBM Plex Mono: data, code, MRNs, lab values, dosage text. */
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ============================================================
+     COLOR — BRAND
+     ============================================================ */
+  /* Primary: Deep Blue — anchors. Logos, primary buttons, h1. */
+  --brand-deep-blue:        #1E4E8F;
+  --brand-deep-blue-50:     #EEF3FA;
+  --brand-deep-blue-100:    #D5E1F1;
+  --brand-deep-blue-200:    #A6BFE0;
+  --brand-deep-blue-300:    #6E92C7;
+  --brand-deep-blue-400:    #4570AB;
+  --brand-deep-blue-500:    #1E4E8F;   /* base */
+  --brand-deep-blue-600:    #194176;
+  --brand-deep-blue-700:    #14335C;
+  --brand-deep-blue-800:    #0F2643;
+  --brand-deep-blue-900:    #0A1A2D;
+
+  /* Secondary: Teal — vitality. Accents, highlights, success-of-motion. */
+  --brand-teal:             #2EC4B6;
+  --brand-teal-50:          #E6FAF8;
+  --brand-teal-100:         #C2F2EC;
+  --brand-teal-200:         #8AE5DB;
+  --brand-teal-300:         #56D6C8;
+  --brand-teal-400:         #38CCBC;
+  --brand-teal-500:         #2EC4B6;   /* base */
+  --brand-teal-600:         #25A095;
+  --brand-teal-700:         #1B7A72;
+  --brand-teal-800:         #145A55;
+  --brand-teal-900:         #0D3E3A;
+
+  /* Brand gradient (the wordmark gradient: navy → teal, ~20deg) */
+  --brand-gradient:         linear-gradient(95deg, #1E4E8F 0%, #2A7AA8 45%, #2EC4B6 100%);
+  --brand-gradient-soft:    linear-gradient(95deg, #EEF3FA 0%, #E6FAF8 100%);
+  --brand-gradient-vert:    linear-gradient(180deg, #2EC4B6 0%, #1E4E8F 100%);
+
+  /* ============================================================
+     COLOR — NEUTRALS
+     Cool-leaning grays so they sit comfortably with the navy.
+     ============================================================ */
+  --neutral-0:              #FFFFFF;
+  --neutral-25:             #FBFCFD;
+  --neutral-50:             #F5F7FA;
+  --neutral-100:            #EDF1F5;
+  --neutral-200:            #DCE3EB;
+  --neutral-300:            #C2CCD6;
+  --neutral-400:            #97A3B0;
+  --neutral-500:            #6B7785;
+  --neutral-600:            #4D5764;
+  --neutral-700:            #353D48;
+  --neutral-800:            #1F2630;
+  --neutral-900:            #0E141C;
+
+  /* ============================================================
+     COLOR — SEMANTIC (status / clinical urgency)
+     ============================================================ */
+  --status-ok:              #2EC4B6;   /* uses brand teal */
+  --status-ok-bg:           #E6FAF8;
+  --status-ok-fg:           #145A55;
+
+  --status-info:            #1E4E8F;   /* uses brand deep blue */
+  --status-info-bg:         #EEF3FA;
+  --status-info-fg:         #14335C;
+
+  --status-warn:            #E89B2C;   /* amber, not yellow — clinical */
+  --status-warn-bg:         #FBF1DE;
+  --status-warn-fg:         #6E4710;
+
+  --status-critical:        #D24856;   /* desaturated red — never alarming */
+  --status-critical-bg:     #FBE7EA;
+  --status-critical-fg:     #6F1F27;
+
+  /* Triage / severity ramp — used in clinical UI for vitals,
+     lab flags, allergy severity. Cool-to-hot. */
+  --triage-stable:          #2EC4B6;
+  --triage-watch:           #6E92C7;
+  --triage-elevated:        #E89B2C;
+  --triage-critical:        #D24856;
+
+  /* ============================================================
+     COLOR — FOREGROUND / BACKGROUND (semantic)
+     ============================================================ */
+  --fg-1:                   var(--neutral-900);  /* primary text */
+  --fg-2:                   var(--neutral-700);  /* body */
+  --fg-3:                   var(--neutral-500);  /* muted / labels */
+  --fg-4:                   var(--neutral-400);  /* placeholder / disabled */
+  --fg-on-brand:            #FFFFFF;             /* text on deep-blue */
+  --fg-link:                var(--brand-deep-blue);
+  --fg-link-hover:          var(--brand-deep-blue-700);
+
+  --bg-app:                 var(--neutral-50);
+  --bg-surface:             #FFFFFF;
+  --bg-surface-2:           var(--neutral-25);
+  --bg-surface-sunken:      var(--neutral-100);
+  --bg-brand:               var(--brand-deep-blue);
+  --bg-brand-soft:          var(--brand-deep-blue-50);
+  --bg-accent-soft:         var(--brand-teal-50);
+
+  /* ============================================================
+     BORDERS
+     ============================================================ */
+  --border-subtle:          var(--neutral-200);
+  --border-default:         var(--neutral-300);
+  --border-strong:          var(--neutral-500);
+  --border-brand:           var(--brand-deep-blue);
+  --border-focus:           var(--brand-teal);
+
+  /* ============================================================
+     RADII — small, restrained. We are not a consumer toy.
+     ============================================================ */
+  --radius-xs:              4px;
+  --radius-sm:              6px;
+  --radius-md:              8px;     /* default card / button */
+  --radius-lg:              12px;
+  --radius-xl:              16px;
+  --radius-pill:            999px;
+
+  /* ============================================================
+     SHADOWS — keep them quiet. Use 1–2 max per surface.
+     ============================================================ */
+  --shadow-xs:              0 1px 1px rgba(15, 38, 67, 0.04);
+  --shadow-sm:              0 1px 2px rgba(15, 38, 67, 0.06), 0 1px 1px rgba(15, 38, 67, 0.04);
+  --shadow-md:              0 4px 8px -2px rgba(15, 38, 67, 0.08), 0 2px 4px -2px rgba(15, 38, 67, 0.06);
+  --shadow-lg:              0 12px 24px -8px rgba(15, 38, 67, 0.14), 0 4px 8px -4px rgba(15, 38, 67, 0.08);
+  --shadow-xl:              0 24px 48px -12px rgba(15, 38, 67, 0.18);
+  --shadow-focus:           0 0 0 3px rgba(46, 196, 182, 0.32);
+  --shadow-focus-blue:      0 0 0 3px rgba(30, 78, 143, 0.28);
+  --shadow-inset:           inset 0 1px 2px rgba(15, 38, 67, 0.06);
+
+  /* ============================================================
+     SPACING — 4px base. Clinical UIs run dense; the scale
+     bottoms out small for tabular data.
+     ============================================================ */
+  --space-0:                0;
+  --space-1:                4px;
+  --space-2:                8px;
+  --space-3:                12px;
+  --space-4:                16px;
+  --space-5:                20px;
+  --space-6:                24px;
+  --space-8:                32px;
+  --space-10:               40px;
+  --space-12:               48px;
+  --space-16:               64px;
+  --space-20:               80px;
+  --space-24:               96px;
+
+  /* ============================================================
+     MOTION — fast, calm. Never bouncy. A clinician's screen
+     is not a toy; transitions confirm action, never delay it.
+     ============================================================ */
+  --motion-fast:            120ms;
+  --motion-base:            180ms;
+  --motion-slow:            260ms;
+  --ease-standard:          cubic-bezier(0.2, 0, 0, 1);    /* ease-out — UI default */
+  --ease-emphasized:        cubic-bezier(0.2, 0, 0, 1);
+  --ease-in:                cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out:            cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ============================================================
+     TYPE — base
+     ============================================================ */
+  --font-sans:              "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-display:           "Mulish", -apple-system, BlinkMacSystemFont, sans-serif;   /* same family, heavier weights */
+  --font-mono:              "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Base sizes — 16px root, narrow ramp tuned for dense UI */
+  --fs-xs:                  11px;
+  --fs-sm:                  12px;
+  --fs-base:                14px;   /* default body in product UI */
+  --fs-md:                  15px;
+  --fs-lg:                  16px;
+  --fs-xl:                  18px;
+  --fs-2xl:                 22px;
+  --fs-3xl:                 28px;
+  --fs-4xl:                 36px;
+  --fs-5xl:                 48px;
+  --fs-6xl:                 60px;
+  --fs-7xl:                 76px;
+
+  /* Line heights */
+  --lh-tight:               1.15;
+  --lh-snug:                1.3;
+  --lh-base:                1.5;
+  --lh-relaxed:             1.65;
+
+  /* Weights */
+  --fw-light:               300;
+  --fw-regular:             400;
+  --fw-medium:              500;
+  --fw-semibold:            600;
+  --fw-bold:                700;
+  --fw-extra:               800;
+  --fw-black:               900;
+
+  /* Letter-spacing — Mulish is wide; tighten on display sizes. */
+  --tracking-tight:         -0.02em;
+  --tracking-snug:          -0.01em;
+  --tracking-normal:        0;
+  --tracking-wide:          0.04em;
+  --tracking-caps:          0.08em;
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES
+   Use these classes on real elements; don't restyle h1/p
+   globally because product surfaces and marketing pages
+   want different scales.
+   ============================================================ */
+
+.ds-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extra);
+  font-size: var(--fs-7xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+
+.ds-h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extra);
+  font-size: var(--fs-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+
+.ds-h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-4xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+}
+
+.ds-h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+}
+
+.ds-h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.ds-h5 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.ds-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--brand-teal-700);
+}
+
+.ds-lede {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.ds-body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--fg-2);
+}
+
+.ds-body-lg {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+
+.ds-label {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-tight);
+  color: var(--fg-2);
+}
+
+.ds-caption {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--fg-3);
+}
+
+.ds-micro {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-xs);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.ds-mono {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-regular);
+  font-size: 13px;
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "ss01", "tnum";
+}
+
+.ds-mono-sm {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-regular);
+  font-size: 11px;
+  line-height: var(--lh-tight);
+  color: var(--fg-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-link {
+  color: var(--fg-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: color var(--motion-fast) var(--ease-standard);
+}
+.ds-link:hover { color: var(--fg-link-hover); }
+
+/* Brand gradient text — use sparingly: hero h1, "mCuris" wordmark recreations only. */
+.ds-text-gradient {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
