@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — mCuris</title>
+  <meta name="description" content="Get help with mCuris apps. FAQs for doctors, patients, pharmacists, lab technicians, and ambulance drivers." />
+  <link rel="icon" type="image/png" href="assets/mcuris-mark.png" />
+  <link rel="stylesheet" href="shared/colors_and_type.css" />
+  <link rel="stylesheet" href="shared/site.css" />
+  <style>
+    .faq-item {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--fg-1);
+      line-height: 1.4;
+    }
+    .faq-btn:hover { color: var(--brand-deep-blue); }
+    .faq-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--fg-2);
+      padding-bottom: 18px;
+    }
+    .faq-body ol {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+    .faq-body li { margin-bottom: 4px; }
+    .faq-body a {
+      color: var(--brand-deep-blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .faq-chevron {
+      flex-shrink: 0;
+      transition: transform var(--motion-base) var(--ease-out);
+    }
+    .faq-chevron.open {
+      transform: rotate(180deg);
+    }
+    @media (max-width: 880px) {
+      .support-contact-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared/icons.jsx"></script>
+  <script type="text/babel" src="shared/ui.jsx"></script>
+  <script type="text/babel" src="shared/products.jsx"></script>
+  <script type="text/babel" src="shared/AppDownload.jsx"></script>
+  <script type="text/babel" src="shared/Layout.jsx"></script>
+  <script type="text/babel" src="landing/MyCarePhone.jsx"></script>
+  <script type="text/babel" src="landing/EcosystemDiagram.jsx"></script>
+  <script type="text/babel" src="shared/ChartPreview.jsx"></script>
+  <script type="text/babel" src="landing/Sections.jsx"></script>
+
+  <script type="text/babel">
+    const FAQ_GROUPS = [
+      {
+        id: "general",
+        icon: "info",
+        title: "General",
+        items: [
+          {
+            q: "What is mCuris?",
+            a: "mCuris is a clinical healthcare platform for doctors, pharmacists, lab technicians, ambulance drivers, and patients. It enables digital medical records, e-prescriptions, lab orders, and real-time care coordination.",
+          },
+          {
+            q: "Which apps does mCuris offer?",
+            a: null,
+            list: [
+              { label: "mCuris Consult", desc: "for doctors (clinical EMR, SOAP notes, prescriptions)" },
+              { label: "mCuris Pharmacy", desc: "for pharmacists (e-prescription dispensing)" },
+              { label: "mCuris Lab", desc: "for lab technicians (test orders, result entry)" },
+              { label: "mCuris Ambulance Driver", desc: "for ambulance drivers (trip management, SOS)" },
+              { label: "mCuris MyHealth", desc: "for patients (health records, appointments, prescriptions)" },
+            ],
+          },
+        ],
+      },
+      {
+        id: "account",
+        icon: "user",
+        title: "Account & Login",
+        items: [
+          {
+            q: "I forgot my password. How do I reset it?",
+            a: "Open the app and tap \"Forgot Password\" on the login screen. Enter your registered email address and follow the link sent to your inbox.",
+          },
+          {
+            q: "I can't log in. What should I do?",
+            a: null,
+            steps: [
+              "Check your internet connection.",
+              "Verify you are using the correct email address.",
+              "Try \"Forgot Password\" to reset your credentials.",
+              <>If the issue persists, contact your facility administrator or email <a href="mailto:hello@mcuris.health">hello@mcuris.health</a>.</>,
+            ],
+          },
+          {
+            q: "Can I use mCuris on multiple devices?",
+            a: "Yes. Your account can be used on multiple devices. Sign in with the same credentials on each device.",
+          },
+        ],
+      },
+      {
+        id: "clinical",
+        icon: "stethoscope",
+        title: "Clinical Apps — Doctor, Pharmacy, Lab",
+        items: [
+          {
+            q: "How do I access a patient's records?",
+            a: "Log in with your clinician credentials. Use the patient search to find the patient by name or ID. Access is limited to patients within your facility and is subject to your role permissions.",
+          },
+          {
+            q: "I submitted a lab result by mistake. Can I correct it?",
+            a: "Contact your facility administrator. Result corrections require an authorised override and are audit-logged for compliance.",
+          },
+          {
+            q: "The app is not syncing. What should I do?",
+            a: "Check your internet connection. The app works offline and will sync automatically when connectivity is restored. If sync fails after reconnecting, close and reopen the app.",
+          },
+        ],
+      },
+      {
+        id: "patient",
+        icon: "heart",
+        title: "Patient App — mCuris MyHealth",
+        items: [
+          {
+            q: "How do I view my prescriptions?",
+            a: "Log in and go to the Prescriptions section from the dashboard. All prescriptions issued by your doctor through the mCuris platform will appear here.",
+          },
+          {
+            q: "Is my health data secure?",
+            a: <>Yes. All health data is encrypted at rest and in transit. Access is restricted by role-based permissions. See our <a href="privacy-policy.html">Privacy Policy</a> for full details.</>,
+          },
+          {
+            q: "How do I share my records with another doctor?",
+            a: "Contact your facility administrator. Record sharing is managed at the facility level.",
+          },
+        ],
+      },
+      {
+        id: "ambulance",
+        icon: "zap",
+        title: "Ambulance Driver App",
+        items: [
+          {
+            q: "The SOS feature is not working. What do I do?",
+            a: <>Ensure location permissions are granted to the app (Settings → mCuris Ambulance Driver → Location → Always). If the issue continues, contact your dispatch centre directly and email <a href="mailto:hello@mcuris.health">hello@mcuris.health</a>.</>,
+          },
+          {
+            q: "How is my location used?",
+            a: <>Your GPS location is used only during active trips for dispatch and navigation. Location tracking stops when a trip is completed or cancelled. See our <a href="privacy-policy.html">Privacy Policy</a>.</>,
+          },
+        ],
+      },
+      {
+        id: "technical",
+        icon: "tool",
+        title: "Technical Issues",
+        items: [
+          {
+            q: "The app crashed. How do I report it?",
+            a: null,
+            steps: [
+              <>Email <a href="mailto:hello@mcuris.health">hello@mcuris.health</a> with:</>,
+            ],
+            list: [
+              { label: "App name and version", desc: "found in Settings → About" },
+              { label: "Device model and OS version", desc: null },
+              { label: "What you were doing when the crash occurred", desc: null },
+            ],
+          },
+          {
+            q: "Which devices and OS versions are supported?",
+            a: null,
+            list: [
+              { label: "iOS", desc: "iPhone with iOS 13 or later" },
+              { label: "Android", desc: "devices with Android 8.0 (API 26) or later" },
+            ],
+          },
+        ],
+      },
+    ];
+
+    function FaqItem({ q, a, steps, list }) {
+      const [open, setOpen] = React.useState(false);
+      return (
+        <div className="faq-item">
+          <button className="faq-btn" onClick={() => setOpen(o => !o)} aria-expanded={open}>
+            <span>{q}</span>
+            <svg
+              className={"faq-chevron" + (open ? " open" : "")}
+              width="16" height="16" viewBox="0 0 16 16" fill="none"
+            >
+              <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          {open && (
+            <div className="faq-body">
+              {a && <p style={{ margin: 0 }}>{a}</p>}
+              {steps && (
+                <ol>
+                  {steps.map((s, i) => <li key={i}>{s}</li>)}
+                </ol>
+              )}
+              {list && (
+                <ul style={{ margin: steps ? "8px 0 0" : 0, paddingLeft: 20 }}>
+                  {list.map((item, i) => (
+                    <li key={i}>
+                      <strong>{item.label}</strong>{item.desc ? ` — ${item.desc}` : ""}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    function SupportHero() {
+      return (
+        <section className="page-hero">
+          <div className="shell">
+            <LpEyebrow>Support</LpEyebrow>
+            <h1>Get help with mCuris.</h1>
+            <p>
+              Browse answers below or email us directly. We aim to respond within one business day.
+            </p>
+            <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
+              <a href="mailto:hello@mcuris.health" className="btn btn-primary">
+                <LpIcon name="mail" size={15} />
+                hello@mcuris.health
+              </a>
+              <span style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                padding: "7px 14px", borderRadius: 999,
+                background: "var(--status-ok-bg)", color: "var(--status-ok-fg)",
+                fontSize: 12, fontWeight: 800, letterSpacing: "0.04em",
+              }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--status-ok-fg)" }} />
+                Responds within 1 business day
+              </span>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function FaqSection() {
+      return (
+        <section className="section">
+          <div className="shell">
+            <LpSectionHead
+              eyebrow="FAQ"
+              title="Frequently asked questions."
+              lede="Find answers for common questions about accounts, clinical workflows, patient data, and technical issues."
+            />
+            <div style={{
+              marginTop: 56,
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(520px, 1fr))",
+              gap: 32,
+              alignItems: "start",
+            }}>
+              {FAQ_GROUPS.map(group => (
+                <div key={group.id} id={group.id} style={{
+                  background: "#fff",
+                  border: "1px solid var(--border-subtle)",
+                  borderRadius: 14,
+                  padding: "8px 24px 4px",
+                }}>
+                  <div style={{
+                    display: "flex", alignItems: "center", gap: 10,
+                    paddingTop: 20, paddingBottom: 4,
+                    borderBottom: "1px solid var(--border-subtle)",
+                    marginBottom: 4,
+                  }}>
+                    <span style={{
+                      width: 32, height: 32, borderRadius: 8,
+                      background: "var(--brand-gradient-soft)",
+                      color: "var(--brand-deep-blue)",
+                      display: "inline-flex", alignItems: "center", justifyContent: "center",
+                      flexShrink: 0,
+                    }}>
+                      <LpIcon name={group.icon} size={16} />
+                    </span>
+                    <span style={{
+                      fontSize: 11, fontWeight: 800, letterSpacing: "0.08em",
+                      textTransform: "uppercase", color: "var(--brand-teal-700)",
+                    }}>
+                      {group.title}
+                    </span>
+                  </div>
+                  {group.items.map((item, i) => (
+                    <FaqItem key={i} {...item} />
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function ContactSection() {
+      const fields = [
+        "Full name and role",
+        "Facility name",
+        "App version (Settings → About)",
+        "Device model and OS version",
+        "Description of the issue",
+      ];
+      return (
+        <section className="section" style={{ background: "radial-gradient(ellipse at 20% 0%, #1E4E8F 0%, #14335C 50%, #0F2643 100%)", color: "#fff" }}>
+          <div className="shell">
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1fr)",
+              gap: 56, alignItems: "center",
+            }} className="support-contact-grid">
+              <div>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                  <span style={{ width: 24, height: 1, background: "var(--brand-teal-300)" }} />
+                  <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.10em", textTransform: "uppercase", color: "var(--brand-teal-300)" }}>Contact Support</span>
+                </div>
+                <h2 style={{
+                  margin: 0, fontFamily: "var(--font-display)", fontWeight: 800,
+                  fontSize: "clamp(26px, 3.5vw, 38px)", letterSpacing: "-0.02em", lineHeight: 1.1,
+                  color: "#fff",
+                }}>
+                  Still need help?
+                </h2>
+                <p style={{ fontSize: 16, lineHeight: 1.65, color: "rgba(255,255,255,0.8)", marginTop: 16 }}>
+                  Email us and we'll respond within one business day. Use the subject line format below to help us route your request quickly.
+                </p>
+                <div style={{
+                  marginTop: 24,
+                  padding: "14px 18px",
+                  background: "rgba(255,255,255,0.07)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: 10,
+                }}>
+                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.07em", textTransform: "uppercase", color: "var(--brand-teal-300)", marginBottom: 8 }}>Subject line format</div>
+                  <code style={{ fontSize: 13, color: "rgba(255,255,255,0.9)", fontFamily: "var(--font-mono)" }}>
+                    [App Name] — brief description
+                  </code>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", marginTop: 6, fontFamily: "var(--font-mono)" }}>
+                    e.g. [mCuris Lab] — unable to submit result
+                  </div>
+                </div>
+                <a href="mailto:hello@mcuris.health" className="btn btn-accent" style={{ marginTop: 24 }}>
+                  hello@mcuris.health
+                  <LpIcon name="arrowRight" size={14} />
+                </a>
+              </div>
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.07em", textTransform: "uppercase", color: "rgba(255,255,255,0.45)", marginBottom: 14 }}>
+                  Include in your email
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {fields.map((f, i) => (
+                    <div key={i} style={{
+                      display: "flex", alignItems: "center", gap: 12,
+                      padding: "12px 16px",
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      borderRadius: 10,
+                    }}>
+                      <span style={{
+                        width: 22, height: 22, borderRadius: "50%",
+                        background: "rgba(46,196,182,0.15)",
+                        border: "1px solid var(--brand-teal)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: 11, fontWeight: 800, color: "var(--brand-teal-300)",
+                        flexShrink: 0,
+                      }}>{i + 1}</span>
+                      <span style={{ fontSize: 14, color: "rgba(255,255,255,0.88)" }}>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginTop: 20, lineHeight: 1.6 }}>
+                  For privacy-related requests, see our <a href="privacy-policy.html" style={{ color: "var(--brand-teal-300)" }}>Privacy Policy</a>.
+                  mCuris is operated by Mangonyx Solutions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <SiteNav />
+          <main>
+            <SupportHero />
+            <FaqSection />
+            <ContactSection />
+          </main>
+          <SiteFooter />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

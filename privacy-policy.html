@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — mCuris</title>
+  <meta name="description" content="How mCuris collects, uses, and protects your personal and health information." />
+  <link rel="icon" type="image/png" href="assets/mcuris-mark.png" />
+  <link rel="stylesheet" href="shared/colors_and_type.css" />
+  <link rel="stylesheet" href="shared/site.css" />
+  <style>
+    .policy-prose h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--fg-1);
+      margin: 48px 0 14px;
+      padding-top: 8px;
+    }
+    .policy-prose h2:first-child { margin-top: 0; }
+    .policy-prose p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--fg-2);
+      margin: 0 0 16px;
+    }
+    .policy-prose ul {
+      margin: 0 0 16px;
+      padding-left: 22px;
+    }
+    .policy-prose li {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--fg-2);
+      margin-bottom: 6px;
+    }
+    .policy-prose a {
+      color: var(--brand-deep-blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .policy-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 0;
+    }
+    @media (max-width: 720px) {
+      .policy-anchor-nav { flex-wrap: wrap !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared/icons.jsx"></script>
+  <script type="text/babel" src="shared/ui.jsx"></script>
+  <script type="text/babel" src="shared/products.jsx"></script>
+  <script type="text/babel" src="shared/AppDownload.jsx"></script>
+  <script type="text/babel" src="shared/Layout.jsx"></script>
+  <script type="text/babel" src="landing/MyCarePhone.jsx"></script>
+  <script type="text/babel" src="landing/EcosystemDiagram.jsx"></script>
+  <script type="text/babel" src="shared/ChartPreview.jsx"></script>
+  <script type="text/babel" src="landing/Sections.jsx"></script>
+
+  <script type="text/babel">
+    const ANCHORS = [
+      { href: "#information",  label: "Information" },
+      { href: "#legal-basis",  label: "Legal Basis" },
+      { href: "#third-party",  label: "Third Parties" },
+      { href: "#opt-out",      label: "Opt-Out" },
+      { href: "#retention",    label: "Retention" },
+      { href: "#children",     label: "Children" },
+      { href: "#security",     label: "Security" },
+      { href: "#contact",      label: "Contact" },
+    ];
+
+    function PrivacyHero() {
+      return (
+        <section className="page-hero">
+          <div className="shell">
+            <LpEyebrow>Privacy Policy</LpEyebrow>
+            <h1>How we handle your information.</h1>
+            <p>
+              This policy applies to the mCuris platform applications — mCuris MyCare, mCuris Consult, mCuris Lab, mCuris Pharmacy, and mCuris Drive — created by Mangonyx Solutions as a Free service.
+            </p>
+            <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 10 }} className="policy-anchor-nav">
+              {ANCHORS.map(a => (
+                <a key={a.href} href={a.href} className="btn btn-secondary btn-sm">
+                  {a.label}
+                </a>
+              ))}
+            </div>
+            <p style={{ marginTop: 24, fontSize: 13, color: "var(--fg-3)", margin: "24px 0 0" }}>
+              Effective date: 2026-04-29
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function PrivacyBody() {
+      return (
+        <section className="section">
+          <div className="shell-narrow">
+            <div className="policy-prose">
+
+              <h2 id="information">Information Collection and Use</h2>
+              <p>
+                The Application collects information when you download and use it. This information may include your device's Internet Protocol address (for example, IP address), the pages of the Application that you visit, the time and date of your visit, the time spent on those pages, the time spent on the Application, your mobile operating system, and diagnostic information such as crash logs and performance data used to improve reliability and security.
+              </p>
+              <p>
+                For a better experience, while using the Application, the Service Provider may require you to provide certain personally identifiable information, including but not limited to name, email address, age, date of birth, gender, phone number, Aadhaar number, ABHA number, professional registration details, prescription information, consultation records, laboratory records, pharmacy fulfillment data, emergency dispatch details, and other health-related information necessary to provide healthcare services through the platform.
+              </p>
+              <p>
+                The information requested by the Service Provider will be retained and used as described in this Privacy Policy. The Service Provider collects and processes this information to operate the platform, support patient care, manage consultations, generate prescriptions, process laboratory workflows, support pharmacy services, facilitate ambulance dispatch, maintain security, comply with legal obligations, and improve the quality of the Application.
+              </p>
+              <p>
+                The Application may use Aadhaar information only for identity verification where permitted by applicable law and policy. Aadhaar information will not be used for unrelated purposes, and ABHA-linked health information is accessed or shared only with appropriate consent and for legitimate healthcare purposes within the ABDM ecosystem.
+              </p>
+              <p>
+                The Application collects location information in order to provide healthcare and operational features. For patient-facing and other general modules, location may be used while the app is in use to help identify nearby healthcare facilities, laboratories, pharmacies, or relevant services. For the ambulance driver application, mCuris Drive, the Application may collect precise and continuous background location information to support real-time ambulance tracking, navigation, dispatch coordination, and live status sharing during active emergency assignments.
+              </p>
+              <p>
+                This app collects location data to enable real-time ambulance tracking, navigation, dispatch coordination, and emergency response support even when the app is closed or not in use in the mCuris Drive application.
+              </p>
+              <p>
+                The Application uses Artificial Intelligence (AI) technologies to enhance healthcare workflows and provide certain features. These AI-supported features may include document parsing, OCR of prescriptions or reports, decision support, patient summaries, workflow assistance, and other automated functionalities. AI processing is carried out in accordance with this Privacy Policy and applicable law, and AI outputs are intended to support, not replace, professional clinical judgment.
+              </p>
+              <p>
+                The Service Provider may use the information you provided to contact you from time to time to provide important information, required notices, service-related alerts, account or security communications, operational messages, and other communications directly related to the functioning of the Application. The Service Provider does not use health data for advertising or unrelated profiling purposes.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="legal-basis">Legal Basis and Consent</h2>
+              <p>
+                The Service Provider processes personal data and health-related information in accordance with applicable Indian law, including the Digital Personal Data Protection Act, 2023. Where required, the Service Provider relies on user consent, guardian consent, legitimate healthcare purposes, and legal obligations to process data necessary for treatment, care coordination, emergency response, recordkeeping, compliance, and secure operation of the platform.
+              </p>
+              <p>
+                Where ABHA-linked records are involved, the Service Provider recognizes that access to and sharing of such records must be based on specific, informed consent. The Application is designed so that health information is handled only for the purposes the user has approved or as otherwise permitted by applicable law.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="third-party">Third Party Access</h2>
+              <p>
+                Only the information necessary to operate, secure, and improve the Application is shared with external service providers, and such sharing is limited to the purposes described in this Privacy Policy. The Service Provider does not sell personal data or health data to third parties.
+              </p>
+              <p>Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data:</p>
+              <ul>
+                <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Play Services</a></li>
+                <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Authentication</a></li>
+                <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Cloud Messaging</a></li>
+                <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Crashlytics</a></li>
+              </ul>
+              <p>The Service Provider may disclose User Provided and Automatically Collected Information:</p>
+              <ul>
+                <li>as required by law, such as to comply with a subpoena, court order, lawful governmental request, or similar legal process;</li>
+                <li>when they believe in good faith that disclosure is necessary to protect their rights, protect your safety or the safety of others, investigate fraud, respond to a government request, or address an emergency involving health or safety;</li>
+                <li>with trusted service providers who work on their behalf, do not have an independent right to use the information disclosed to them, and have agreed to adhere to confidentiality, security, and applicable privacy obligations;</li>
+                <li>with authorized healthcare participants such as doctors, laboratories, pharmacies, ambulance personnel, hospitals, caregivers, or patients, only as necessary for treatment, care coordination, emergency response, prescription fulfillment, diagnostic workflows, or other legitimate healthcare purposes supported by the platform.</li>
+              </ul>
+
+              <div className="policy-divider" />
+
+              <h2 id="opt-out">Opt-Out Rights</h2>
+              <p>
+                You can stop all collection of information by an Application by uninstalling it. You may use the standard uninstall processes available as part of your mobile device or via the mobile application marketplace or network. Please note that uninstalling the Application will not automatically delete records that must be retained for healthcare, legal, security, fraud prevention, audit, or compliance purposes.
+              </p>
+              <p>
+                If you wish to withdraw consent for optional processing, correct your personal information, or request deletion where applicable, you may contact the Service Provider. Certain records may need to be retained where required for ongoing care, medical documentation, legal compliance, dispute handling, abuse prevention, or other legitimate obligations.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="retention">Data Retention Policy</h2>
+              <p>
+                The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter. Health records, prescriptions, consultation notes, laboratory records, pharmacy transaction records, dispatch records, audit trails, and related operational records may be retained for longer periods where required for healthcare delivery, continuity of care, legal compliance, fraud prevention, recordkeeping, safety, and dispute resolution.
+              </p>
+              <p>
+                If you would like the Service Provider to delete User Provided Data that you have provided via the Application, please contact them at <a href="mailto:privacy@mangonyx.com">privacy@mangonyx.com</a> and they will respond in a reasonable time, subject to any legal or operational obligations that require retention of some information.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="children">Children</h2>
+              <p>
+                The Application is not intended for independent use by children. However, because this is a healthcare platform, the Application may process information relating to infants, children, and other minors when that information is provided by a parent, legal guardian, caregiver, doctor, hospital, laboratory, pharmacy, ambulance operator, or other authorized healthcare user for legitimate healthcare purposes.
+              </p>
+              <p>
+                Under the Digital Personal Data Protection Act, 2023, a child is generally a person below 18 years of age, and processing of a child's personal data requires verifiable consent from a parent or lawful guardian unless a lawful exception applies.
+              </p>
+              <p>
+                The Service Provider does not use pediatric patient data for advertising, behavioral profiling, or unrelated commercial purposes. Such information is handled with appropriate safeguards and only in the context of treatment, diagnosis, care coordination, emergency transport, prescriptions, or laboratory services.
+              </p>
+              <p>
+                If you are a parent or guardian and believe that a child's personal information has been provided without appropriate authorization, or if you want to inquire about, correct, or request action relating to such information, please contact the Service Provider at <a href="mailto:privacy@mangonyx.com">privacy@mangonyx.com</a>.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="security">Security</h2>
+              <p>
+                The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, administrative, and procedural safeguards to protect information that the Service Provider processes and maintains. These safeguards may include encryption in transit and at rest, access controls, role-based permissions, audit logging, monitoring, secure authentication, and other reasonable security practices appropriate for healthcare and sensitive personal data.
+              </p>
+              <p>
+                The Service Provider also follows security and privacy practices aligned with widely accepted healthcare data protection principles, including HIPAA-style administrative, technical, and physical safeguards, where applicable.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="changes">Changes</h2>
+              <p>
+                This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page and, where appropriate, through in-app notification or other reasonable means. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="consent">Your Consent</h2>
+              <p>
+                By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by the Service Provider. Where required by law, additional consent, explicit consent, or guardian consent may be obtained for specific categories of data or specific processing activities.
+              </p>
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function PrivacyContact() {
+      return (
+        <section className="section" id="contact" style={{ background: "var(--bg-app)", borderTop: "1px solid var(--border-subtle)" }}>
+          <div className="shell-narrow">
+            <LpEyebrow>Contact</LpEyebrow>
+            <h2 className="ds-h2" style={{ margin: "16px 0 8px", fontSize: "clamp(24px, 3vw, 32px)" }}>
+              Questions about this policy?
+            </h2>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--fg-2)", margin: "0 0 32px" }}>
+              If you have any questions regarding privacy while using the Application, or have questions about our practices, contact the Service Provider directly.
+            </p>
+            <div style={{
+              padding: 24, borderRadius: 12,
+              background: "#fff", border: "1px solid var(--border-subtle)",
+              display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap",
+            }}>
+              <span style={{
+                width: 44, height: 44, borderRadius: 10, flexShrink: 0,
+                background: "var(--brand-gradient-soft)",
+                color: "var(--brand-deep-blue)",
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <LpIcon name="mail" size={22} />
+              </span>
+              <div style={{ flex: 1, minWidth: 200 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "var(--fg-1)" }}>Mangonyx Solutions — Privacy</div>
+                <div style={{ fontSize: 13, color: "var(--fg-3)" }}>Service Provider for the mCuris platform</div>
+              </div>
+              <a href="mailto:privacy@mangonyx.com" className="btn btn-secondary btn-sm">
+                privacy@mangonyx.com
+                <LpIcon name="arrowRight" size={13} />
+              </a>
+            </div>
+            <p style={{ marginTop: 20, fontSize: 12.5, color: "var(--fg-3)", lineHeight: 1.6 }}>
+              For product support, visit <a href="support.html" style={{ color: "var(--brand-deep-blue)" }}>mcuris.health/support</a>.
+              For security concerns, email <a href="mailto:security@mcuris.health" style={{ color: "var(--brand-deep-blue)" }}>security@mcuris.health</a>.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <SiteNav />
+          <main>
+            <PrivacyHero />
+            <PrivacyBody />
+            <PrivacyContact />
+            <CtaBanner />
+          </main>
+          <SiteFooter />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
