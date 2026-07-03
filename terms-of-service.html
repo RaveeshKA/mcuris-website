@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service — mCuris</title>
+  <meta name="description" content="The terms that govern your use of the mCuris platform and applications." />
+  <link rel="icon" type="image/png" href="assets/mcuris-mark.png" />
+  <link rel="stylesheet" href="shared/colors_and_type.css" />
+  <link rel="stylesheet" href="shared/site.css" />
+  <style>
+    .policy-prose h2 {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--fg-1);
+      margin: 48px 0 14px;
+      padding-top: 8px;
+    }
+    .policy-prose h2:first-child { margin-top: 0; }
+    .policy-prose p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--fg-2);
+      margin: 0 0 16px;
+    }
+    .policy-prose ul {
+      margin: 0 0 16px;
+      padding-left: 22px;
+    }
+    .policy-prose li {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--fg-2);
+      margin-bottom: 6px;
+    }
+    .policy-prose a {
+      color: var(--brand-deep-blue);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .policy-divider {
+      height: 1px;
+      background: var(--border-subtle);
+      margin: 0;
+    }
+    @media (max-width: 720px) {
+      .policy-anchor-nav { flex-wrap: wrap !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared/icons.jsx"></script>
+  <script type="text/babel" src="shared/ui.jsx"></script>
+  <script type="text/babel" src="shared/products.jsx"></script>
+  <script type="text/babel" src="shared/AppDownload.jsx"></script>
+  <script type="text/babel" src="shared/Layout.jsx"></script>
+  <script type="text/babel" src="landing/MyCarePhone.jsx"></script>
+  <script type="text/babel" src="landing/EcosystemDiagram.jsx"></script>
+  <script type="text/babel" src="shared/ChartPreview.jsx"></script>
+  <script type="text/babel" src="landing/Sections.jsx"></script>
+
+  <script type="text/babel">
+    const ANCHORS = [
+      { href: "#eligibility",   label: "Eligibility" },
+      { href: "#services",      label: "Services" },
+      { href: "#account",       label: "Account" },
+      { href: "#health-data",   label: "Health Data" },
+      { href: "#acceptable-use", label: "Acceptable Use" },
+      { href: "#telehealth",    label: "Telehealth" },
+      { href: "#liability",     label: "Liability" },
+      { href: "#governing-law", label: "Governing Law" },
+      { href: "#contact",       label: "Contact" },
+    ];
+
+    function TermsHero() {
+      return (
+        <section className="page-hero">
+          <div className="shell">
+            <LpEyebrow>Terms of Service</LpEyebrow>
+            <h1>The rules of the road.</h1>
+            <p>
+              These Terms govern your use of the mCuris platform applications — mCuris MyCare,
+              mCuris Consult, mCuris Lab, mCuris Pharmacy, and mCuris Drive — created by
+              Mangonyx Solutions.
+            </p>
+            <div style={{ marginTop: 28, display: "flex", flexWrap: "wrap", gap: 10 }} className="policy-anchor-nav">
+              {ANCHORS.map(a => (
+                <a key={a.href} href={a.href} className="btn btn-secondary btn-sm">
+                  {a.label}
+                </a>
+              ))}
+            </div>
+            <p style={{ marginTop: 24, fontSize: 13, color: "var(--fg-3)", margin: "24px 0 0" }}>
+              Effective date: 2026-07-03
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function TermsBody() {
+      return (
+        <section className="section">
+          <div className="shell-narrow">
+            <div className="policy-prose">
+
+              <h2 id="eligibility">1. Eligibility</h2>
+              <p>
+                You must be at least 18 years old to create an account on the mCuris platform.
+                Minors may use the Application only through a parent or legal guardian who accepts
+                these Terms on their behalf. By using the Application, you represent that you meet
+                these requirements or that a parent or legal guardian has accepted these Terms on
+                your behalf.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="services">2. Services Provided</h2>
+              <p>
+                mCuris MyCare provides patients with access to their health records, lab results,
+                prescriptions, appointment bookings, teleconsultations, ambulance requests, and
+                related health management tools. These services are informational and administrative
+                in nature and do not constitute medical advice.
+              </p>
+              <p>
+                Always consult a qualified healthcare professional for diagnosis, treatment, or
+                medical decisions. In a medical emergency, call <strong>112</strong> immediately.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="account">3. Account Registration</h2>
+              <p>
+                You agree to provide accurate, current, and complete information during registration
+                and to keep your credentials confidential. You are responsible for all activity that
+                occurs under your account. Notify us immediately at{" "}
+                <a href="mailto:support@mcuris.health">support@mcuris.health</a> if you suspect
+                unauthorised access.
+              </p>
+              <p>
+                You may not create an account on behalf of another person without their authorisation,
+                except where a parent or legal guardian is registering on behalf of a minor for
+                legitimate healthcare purposes.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="health-data">4. Health Data & Privacy</h2>
+              <p>
+                We collect and process your health information to provide the services described
+                above. Our handling of personal and health data is governed by our{" "}
+                <a href="privacy-policy.html">Privacy Policy</a> and complies with India's Digital
+                Personal Data Protection Act, 2023 (DPDPA) and applicable health data regulations.
+              </p>
+              <p>
+                mCuris is a product of Mangonyx Solutions. Your data is stored on servers located
+                in India and is encrypted at rest and in transit. We do not sell your personal
+                health information to third parties.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="acceptable-use">5. Acceptable Use</h2>
+              <p>You agree not to:</p>
+              <ul>
+                <li>Share your login credentials with any third party.</li>
+                <li>Upload false, misleading, or fraudulent health information.</li>
+                <li>Attempt to gain unauthorised access to other users' records.</li>
+                <li>Use the Application for any unlawful purpose or in violation of applicable laws.</li>
+                <li>Interfere with or disrupt the integrity or performance of the platform.</li>
+                <li>Use automated tools, bots, or scripts to access or scrape the platform.</li>
+                <li>Attempt to reverse-engineer, decompile, or extract source code from the Application.</li>
+              </ul>
+              <p>
+                Violation of these terms may result in immediate suspension or termination of your
+                account and, where applicable, referral to law enforcement.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="telehealth">6. Telehealth & Ambulance Services</h2>
+              <p>
+                Teleconsultation services connect you with licensed healthcare professionals. The
+                clinical opinions provided are based on information you share and do not replace
+                in-person evaluation. Mangonyx Solutions is not liable for clinical decisions
+                made solely on the basis of a teleconsultation.
+              </p>
+              <p>
+                Ambulance dispatch requests are relayed to third-party providers. Response times
+                depend on provider availability and location. Mangonyx Solutions does not guarantee
+                response times and the Application is not a substitute for calling emergency
+                services (<strong>112</strong>).
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="intellectual-property">7. Intellectual Property</h2>
+              <p>
+                All content, trademarks, and technology in the Application are owned by Mangonyx
+                Solutions or its licensors. You are granted a limited, non-exclusive, revocable
+                licence to use the Application for personal, non-commercial purposes only. You may
+                not reproduce, modify, or distribute any part of the Application without our written
+                consent.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="liability">8. Limitation of Liability</h2>
+              <p>
+                To the maximum extent permitted by applicable law, Mangonyx Solutions and its
+                officers, employees, and partners shall not be liable for any indirect, incidental,
+                special, or consequential damages arising from your use of the Application, including
+                but not limited to loss of data, revenue, or health outcomes.
+              </p>
+              <p>
+                Our total aggregate liability to you for any claim shall not exceed the amount you
+                paid to Mangonyx Solutions (if any) in the 12 months preceding the claim.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="modifications">9. Modifications to Terms</h2>
+              <p>
+                We may update these Terms from time to time. When we do, we will revise the
+                effective date above and, where material changes are made, notify you via the
+                Application or email. Your continued use of the Application after any changes
+                constitutes acceptance of the updated Terms.
+              </p>
+
+              <div className="policy-divider" />
+
+              <h2 id="governing-law">10. Governing Law & Disputes</h2>
+              <p>
+                These Terms are governed by the laws of India. Any dispute arising from these Terms
+                shall be subject to the exclusive jurisdiction of the courts of Ernakulam, Kerala,
+                India.
+              </p>
+
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function TermsContact() {
+      return (
+        <section className="section" id="contact" style={{ background: "var(--bg-app)", borderTop: "1px solid var(--border-subtle)" }}>
+          <div className="shell-narrow">
+            <LpEyebrow>Contact</LpEyebrow>
+            <h2 className="ds-h2" style={{ margin: "16px 0 8px", fontSize: "clamp(24px, 3vw, 32px)" }}>
+              Questions about these Terms?
+            </h2>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--fg-2)", margin: "0 0 32px" }}>
+              If you have any questions about these Terms of Service, contact us directly.
+            </p>
+            <div style={{
+              padding: 24, borderRadius: 12,
+              background: "#fff", border: "1px solid var(--border-subtle)",
+              display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap",
+            }}>
+              <span style={{
+                width: 44, height: 44, borderRadius: 10, flexShrink: 0,
+                background: "var(--brand-gradient-soft)",
+                color: "var(--brand-deep-blue)",
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <LpIcon name="mail" size={22} />
+              </span>
+              <div style={{ flex: 1, minWidth: 200 }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "var(--fg-1)" }}>Mangonyx Solutions — Legal</div>
+                <div style={{ fontSize: 13, color: "var(--fg-3)" }}>Ernakulam, Kerala, India</div>
+              </div>
+              <a href="mailto:support@mcuris.health" className="btn btn-secondary btn-sm">
+                support@mcuris.health
+                <LpIcon name="arrowRight" size={13} />
+              </a>
+            </div>
+            <p style={{ marginTop: 20, fontSize: 12.5, color: "var(--fg-3)", lineHeight: 1.6 }}>
+              For privacy questions, see our <a href="privacy-policy.html" style={{ color: "var(--brand-deep-blue)" }}>Privacy Policy</a>.
+              For security concerns, email <a href="mailto:security@mcuris.health" style={{ color: "var(--brand-deep-blue)" }}>security@mcuris.health</a>.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <SiteNav />
+          <main>
+            <TermsHero />
+            <TermsBody />
+            <TermsContact />
+            <CtaBanner />
+          </main>
+          <SiteFooter />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
