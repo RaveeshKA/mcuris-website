@@ -96,7 +96,7 @@ function MyCarePhone({ width = 290 }) {
         {/* Next appointment card */}
         <div style={{
           margin: "12px 14px 0", padding: 11, borderRadius: 12,
-          background: "linear-gradient(135deg, #1E4E8F 0%, #2A6FA8 60%, #2EC4B6 130%)",
+          background: "linear-gradient(135deg, #00635F 0%, #0E4D68 60%, #203373 130%)",
           color: "#fff", boxShadow: "var(--shadow-sm)",
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>

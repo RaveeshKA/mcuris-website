@@ -128,7 +128,7 @@ function SiteFooter() {
         <div className="footer-grid">
           <div>
             <div className="footer-brand-logo">
-              <img src={(window.__resources && window.__resources.mark) || "assets/mcuris-mark.png"} alt="" style={{ width: "75px", height: "75px", background: "#fff", borderRadius: "50%", padding: "8px", boxSizing: "border-box" }} />
+              <img src={(window.__resources && window.__resources.mark) || "assets/mcuris-mark.png"} alt="" style={{ width: "56px", height: "56px", background: "rgba(255,255,255,0.55)", borderRadius: "50%", padding: "5px", boxSizing: "border-box" }} />
               mCuris
             </div>
             <p className="footer-tagline">

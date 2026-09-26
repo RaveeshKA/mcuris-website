@@ -20,36 +20,36 @@
   /* ============================================================
      COLOR — BRAND
      ============================================================ */
-  /* Primary: Deep Blue — anchors. Logos, primary buttons, h1. */
-  --brand-deep-blue:        #1E4E8F;
-  --brand-deep-blue-50:     #EEF3FA;
-  --brand-deep-blue-100:    #D5E1F1;
-  --brand-deep-blue-200:    #A6BFE0;
-  --brand-deep-blue-300:    #6E92C7;
-  --brand-deep-blue-400:    #4570AB;
-  --brand-deep-blue-500:    #1E4E8F;   /* base */
-  --brand-deep-blue-600:    #194176;
-  --brand-deep-blue-700:    #14335C;
-  --brand-deep-blue-800:    #0F2643;
-  --brand-deep-blue-900:    #0A1A2D;
+  /* Primary: Deep Teal (mCuris app "Malabar" preset) — anchors. Logos, primary buttons, h1. */
+  --brand-deep-blue:        #00635F;
+  --brand-deep-blue-50:     #EFF5F5;
+  --brand-deep-blue-100:    #D6E6E5;
+  --brand-deep-blue-200:    #A7C9C8;
+  --brand-deep-blue-300:    #69A3A1;
+  --brand-deep-blue-400:    #348380;
+  --brand-deep-blue-500:    #00635F;   /* base */
+  --brand-deep-blue-600:    #00524F;
+  --brand-deep-blue-700:    #00413E;
+  --brand-deep-blue-800:    #00302E;
+  --brand-deep-blue-900:    #00201F;
 
-  /* Secondary: Teal — vitality. Accents, highlights, success-of-motion. */
-  --brand-teal:             #2EC4B6;
-  --brand-teal-50:          #E6FAF8;
-  --brand-teal-100:         #C2F2EC;
-  --brand-teal-200:         #8AE5DB;
-  --brand-teal-300:         #56D6C8;
-  --brand-teal-400:         #38CCBC;
-  --brand-teal-500:         #2EC4B6;   /* base */
-  --brand-teal-600:         #25A095;
-  --brand-teal-700:         #1B7A72;
-  --brand-teal-800:         #145A55;
-  --brand-teal-900:         #0D3E3A;
+  /* Secondary: Logo Navy (mCuris app "Malabar" preset) — accents, highlights. */
+  --brand-teal:             #203373;
+  --brand-teal-50:          #F1F2F6;
+  --brand-teal-100:         #DBDEE9;
+  --brand-teal-200:         #B2B9CF;
+  --brand-teal-300:         #7C87AD;
+  --brand-teal-400:         #4E5D90;
+  --brand-teal-500:         #203373;   /* base */
+  --brand-teal-600:         #1B2A60;
+  --brand-teal-700:         #15214B;
+  --brand-teal-800:         #101938;
+  --brand-teal-900:         #0A1126;
 
-  /* Brand gradient (the wordmark gradient: navy → teal, ~20deg) */
-  --brand-gradient:         linear-gradient(95deg, #1E4E8F 0%, #2A7AA8 45%, #2EC4B6 100%);
-  --brand-gradient-soft:    linear-gradient(95deg, #EEF3FA 0%, #E6FAF8 100%);
-  --brand-gradient-vert:    linear-gradient(180deg, #2EC4B6 0%, #1E4E8F 100%);
+  /* Brand gradient (the wordmark gradient: teal → navy, ~20deg) */
+  --brand-gradient:         linear-gradient(95deg, #00635F 0%, #0E4D68 45%, #203373 100%);
+  --brand-gradient-soft:    linear-gradient(95deg, #EFF5F5 0%, #F1F2F6 100%);
+  --brand-gradient-vert:    linear-gradient(180deg, #203373 0%, #00635F 100%);
 
   /* ============================================================
      COLOR — NEUTRALS
@@ -71,13 +71,13 @@
   /* ============================================================
      COLOR — SEMANTIC (status / clinical urgency)
      ============================================================ */
-  --status-ok:              #2EC4B6;   /* uses brand teal */
-  --status-ok-bg:           #E6FAF8;
-  --status-ok-fg:           #145A55;
+  --status-ok:              #00635F;   /* uses brand primary (deep teal) */
+  --status-ok-bg:           #EFF5F5;
+  --status-ok-fg:           #00413E;
 
-  --status-info:            #1E4E8F;   /* uses brand deep blue */
-  --status-info-bg:         #EEF3FA;
-  --status-info-fg:         #14335C;
+  --status-info:            #203373;   /* uses brand secondary (navy) */
+  --status-info-bg:         #F1F2F6;
+  --status-info-fg:         #15214B;
 
   --status-warn:            #E89B2C;   /* amber, not yellow — clinical */
   --status-warn-bg:         #FBF1DE;
@@ -89,8 +89,8 @@
 
   /* Triage / severity ramp — used in clinical UI for vitals,
      lab flags, allergy severity. Cool-to-hot. */
-  --triage-stable:          #2EC4B6;
-  --triage-watch:           #6E92C7;
+  --triage-stable:          #00635F;
+  --triage-watch:           #7C87AD;
   --triage-elevated:        #E89B2C;
   --triage-critical:        #D24856;
 
@@ -135,14 +135,14 @@
   /* ============================================================
      SHADOWS — keep them quiet. Use 1–2 max per surface.
      ============================================================ */
-  --shadow-xs:              0 1px 1px rgba(15, 38, 67, 0.04);
-  --shadow-sm:              0 1px 2px rgba(15, 38, 67, 0.06), 0 1px 1px rgba(15, 38, 67, 0.04);
-  --shadow-md:              0 4px 8px -2px rgba(15, 38, 67, 0.08), 0 2px 4px -2px rgba(15, 38, 67, 0.06);
-  --shadow-lg:              0 12px 24px -8px rgba(15, 38, 67, 0.14), 0 4px 8px -4px rgba(15, 38, 67, 0.08);
-  --shadow-xl:              0 24px 48px -12px rgba(15, 38, 67, 0.18);
-  --shadow-focus:           0 0 0 3px rgba(46, 196, 182, 0.32);
-  --shadow-focus-blue:      0 0 0 3px rgba(30, 78, 143, 0.28);
-  --shadow-inset:           inset 0 1px 2px rgba(15, 38, 67, 0.06);
+  --shadow-xs:              0 1px 1px rgba(0, 48, 46, 0.04);
+  --shadow-sm:              0 1px 2px rgba(0, 48, 46, 0.06), 0 1px 1px rgba(0, 48, 46, 0.04);
+  --shadow-md:              0 4px 8px -2px rgba(0, 48, 46, 0.08), 0 2px 4px -2px rgba(0, 48, 46, 0.06);
+  --shadow-lg:              0 12px 24px -8px rgba(0, 48, 46, 0.14), 0 4px 8px -4px rgba(0, 48, 46, 0.08);
+  --shadow-xl:              0 24px 48px -12px rgba(0, 48, 46, 0.18);
+  --shadow-focus:           0 0 0 3px rgba(0, 99, 95, 0.32);
+  --shadow-focus-blue:      0 0 0 3px rgba(32, 51, 115, 0.28);
+  --shadow-inset:           inset 0 1px 2px rgba(0, 48, 46, 0.06);
 
   /* ============================================================
      SPACING — 4px base. Clinical UIs run dense; the scale

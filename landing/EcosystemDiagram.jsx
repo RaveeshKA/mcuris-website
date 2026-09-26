@@ -66,10 +66,10 @@ function EcosystemDiagram({ size = 600, autoCycle = true, theme = "light" }) {
 
   // Theme tokens
   const t = dark ? {
-    bgWash:        "#2EC4B6",      // teal halo behind hub
+    bgWash:        "#203373",      // teal halo behind hub
     bgWashOpacity: 0.18,
     hubOuter:      "url(#ecoHubDark)",
-    hubOuterStroke:"rgba(46,196,182,0.55)",
+    hubOuterStroke:"rgba(32,51,115,0.55)",
     hubInner:      "url(#ecoHubInnerDark)",       // radial gradient that fades into the dark backdrop
     hubInnerStroke:"transparent",
     traceStroke:   "url(#ecoTraceDark)",
@@ -84,13 +84,13 @@ function EcosystemDiagram({ size = 600, autoCycle = true, theme = "light" }) {
     labelMain:     "#FFFFFF",
     labelMainIdle: "rgba(255,255,255,0.82)",
     labelSub:      "rgba(255,255,255,0.52)",
-    activeRingGlow:"drop-shadow(0 0 14px rgba(46,196,182,0.65))",
+    activeRingGlow:"drop-shadow(0 0 14px rgba(32,51,115,0.65))",
     traceFilter:   "url(#ecoGlow)",
   } : {
-    bgWash:        "#EEF3FA",
+    bgWash:        "#EFF5F5",
     bgWashOpacity: 0.50,
     hubOuter:      "url(#ecoHub)",
-    hubOuterStroke:"#A6BFE0",
+    hubOuterStroke:"#A7C9C8",
     hubInner:      "#fff",
     hubInnerStroke:"#DCE3EB",
     traceStroke:   "url(#ecoTrace)",
@@ -119,28 +119,28 @@ function EcosystemDiagram({ size = 600, autoCycle = true, theme = "light" }) {
       <svg viewBox="0 0 600 520" width="100%" height="100%" style={{ display: "block", overflow: "visible" }}>
         <defs>
           <linearGradient id="ecoTrace" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0%" stopColor="#1E4E8F" />
-            <stop offset="100%" stopColor="#2EC4B6" />
+            <stop offset="0%" stopColor="#00635F" />
+            <stop offset="100%" stopColor="#203373" />
           </linearGradient>
           <linearGradient id="ecoTraceDark" x1="0" x2="1" y1="0" y2="0">
-            <stop offset="0%" stopColor="#56D6C8" />
-            <stop offset="100%" stopColor="#8AE5DB" />
+            <stop offset="0%" stopColor="#7C87AD" />
+            <stop offset="100%" stopColor="#B2B9CF" />
           </linearGradient>
           <radialGradient id="ecoHub" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="60%" stopColor="#EEF3FA" />
-            <stop offset="100%" stopColor="#D5E1F1" />
+            <stop offset="60%" stopColor="#EFF5F5" />
+            <stop offset="100%" stopColor="#D6E6E5" />
           </radialGradient>
           <radialGradient id="ecoHubDark" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"   stopColor="#2EC4B6" stopOpacity="0.55" />
-            <stop offset="55%"  stopColor="#1E4E8F" stopOpacity="0.65" />
-            <stop offset="100%" stopColor="#0A1A2D" stopOpacity="0.95" />
+            <stop offset="0%"   stopColor="#203373" stopOpacity="0.55" />
+            <stop offset="55%"  stopColor="#00635F" stopOpacity="0.65" />
+            <stop offset="100%" stopColor="#00201F" stopOpacity="0.95" />
           </radialGradient>
           <radialGradient id="ecoHubInnerDark" cx="50%" cy="50%" r="50%">
             <stop offset="0%"   stopColor="#FFFFFF"  stopOpacity="0.95" />
-            <stop offset="40%"  stopColor="#C2F2EC"  stopOpacity="0.55" />
-            <stop offset="75%"  stopColor="#2EC4B6"  stopOpacity="0.12" />
-            <stop offset="100%" stopColor="#0A1A2D"  stopOpacity="0" />
+            <stop offset="40%"  stopColor="#DBDEE9"  stopOpacity="0.55" />
+            <stop offset="75%"  stopColor="#203373"  stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#00201F"  stopOpacity="0" />
           </radialGradient>
           <filter id="ecoSoft" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="6" />
@@ -179,8 +179,8 @@ function EcosystemDiagram({ size = 600, autoCycle = true, theme = "light" }) {
               />
               {/* Pulse dot traveling on active trace */}
               {isActive && (
-                <circle r={dark ? 4 : 3.5} fill={dark ? "#8AE5DB" : "#2EC4B6"}
-                        style={{ filter: dark ? "drop-shadow(0 0 6px #2EC4B6)" : "none" }}>
+                <circle r={dark ? 4 : 3.5} fill={dark ? "#B2B9CF" : "#203373"}
+                        style={{ filter: dark ? "drop-shadow(0 0 6px #203373)" : "none" }}>
                   <animateMotion dur="1.6s" repeatCount="indefinite" path={tracePath(node)} />
                 </circle>
               )}
@@ -191,13 +191,13 @@ function EcosystemDiagram({ size = 600, autoCycle = true, theme = "light" }) {
         {/* Hub — circular M+ frame. Dark mode collapses to a single radial
             gradient that fades into the backdrop; light mode keeps the
             classic two-ring well. */}
-        <g style={{ filter: dark ? "drop-shadow(0 0 32px rgba(46,196,182,0.30))" : "none" }}>
+        <g style={{ filter: dark ? "drop-shadow(0 0 32px rgba(32,51,115,0.30))" : "none" }}>
           {dark ? (
             <>
               {/* Single soft halo that bleeds into the dark backdrop */}
               <circle cx={CENTER.x} cy={CENTER.y} r="118" fill="url(#ecoHubInnerDark)" />
               {/* Thin teal ring — purely visual frame, no fill */}
-              <circle cx={CENTER.x} cy={CENTER.y} r="96" fill="none" stroke="rgba(46,196,182,0.45)" strokeWidth="1" />
+              <circle cx={CENTER.x} cy={CENTER.y} r="96" fill="none" stroke="rgba(32,51,115,0.45)" strokeWidth="1" />
             </>
           ) : (
             <>
@@ -211,8 +211,8 @@ function EcosystemDiagram({ size = 600, autoCycle = true, theme = "light" }) {
         {ECO_NODES.map(node => {
           const isActive = node.id === activeId;
           const color = node.color === "teal"
-            ? "#2EC4B6"
-            : (dark ? "#A6BFE0" : "#1E4E8F");   // brighter blue accent in dark mode
+            ? "#203373"
+            : (dark ? "#A7C9C8" : "#00635F");   // brighter blue accent in dark mode
           return (
             <g
               key={node.id}
@@ -293,8 +293,8 @@ function EcosystemDiagram({ size = 600, autoCycle = true, theme = "light" }) {
         transform: "translate(-50%, -50%)",
         pointerEvents: "none",
         filter: dark
-          ? "drop-shadow(0 0 12px rgba(46,196,182,0.65)) drop-shadow(0 0 28px rgba(46,196,182,0.45)) drop-shadow(0 0 56px rgba(30,78,143,0.45)) brightness(1.08)"
-          : "drop-shadow(0 0 14px rgba(46,196,182,0.45)) drop-shadow(0 0 32px rgba(30,78,143,0.20))",
+          ? "drop-shadow(0 0 12px rgba(32,51,115,0.65)) drop-shadow(0 0 28px rgba(32,51,115,0.45)) drop-shadow(0 0 56px rgba(0,99,95,0.45)) brightness(1.08)"
+          : "drop-shadow(0 0 14px rgba(32,51,115,0.45)) drop-shadow(0 0 32px rgba(0,99,95,0.20))",
         animation: "hubBreath 5.2s ease-in-out infinite",
       }}>
         <img
@@ -306,12 +306,12 @@ function EcosystemDiagram({ size = 600, autoCycle = true, theme = "light" }) {
       <style>{`
         @keyframes hubBreath {
           0%, 100% { filter: ${dark
-            ? "drop-shadow(0 0 12px rgba(46,196,182,0.55)) drop-shadow(0 0 28px rgba(46,196,182,0.40)) drop-shadow(0 0 56px rgba(30,78,143,0.40)) brightness(1.08)"
-            : "drop-shadow(0 0 12px rgba(46,196,182,0.35)) drop-shadow(0 0 28px rgba(30,78,143,0.15))"
+            ? "drop-shadow(0 0 12px rgba(32,51,115,0.55)) drop-shadow(0 0 28px rgba(32,51,115,0.40)) drop-shadow(0 0 56px rgba(0,99,95,0.40)) brightness(1.08)"
+            : "drop-shadow(0 0 12px rgba(32,51,115,0.35)) drop-shadow(0 0 28px rgba(0,99,95,0.15))"
           }; }
           50%      { filter: ${dark
-            ? "drop-shadow(0 0 16px rgba(46,196,182,0.85)) drop-shadow(0 0 40px rgba(46,196,182,0.55)) drop-shadow(0 0 72px rgba(30,78,143,0.55)) brightness(1.10)"
-            : "drop-shadow(0 0 18px rgba(46,196,182,0.55)) drop-shadow(0 0 40px rgba(30,78,143,0.25))"
+            ? "drop-shadow(0 0 16px rgba(32,51,115,0.85)) drop-shadow(0 0 40px rgba(32,51,115,0.55)) drop-shadow(0 0 72px rgba(0,99,95,0.55)) brightness(1.10)"
+            : "drop-shadow(0 0 18px rgba(32,51,115,0.55)) drop-shadow(0 0 40px rgba(0,99,95,0.25))"
           }; }
         }
       `}</style>

@@ -144,15 +144,15 @@ function ChartPreview() {
             <svg viewBox="0 0 280 56" width="100%" height="48">
               <defs>
                 <linearGradient id="bpGrad" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0%" stopColor="#1E4E8F" stopOpacity="0.18" />
-                  <stop offset="100%" stopColor="#1E4E8F" stopOpacity="0" />
+                  <stop offset="0%" stopColor="#00635F" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="#00635F" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <path d="M0,32 L20,28 L40,30 L60,22 L80,20 L100,26 L120,18 L140,24 L160,16 L180,14 L200,20 L220,12 L240,18 L260,10 L280,14 L280,56 L0,56 Z"
                     fill="url(#bpGrad)" />
               <path d="M0,32 L20,28 L40,30 L60,22 L80,20 L100,26 L120,18 L140,24 L160,16 L180,14 L200,20 L220,12 L240,18 L260,10 L280,14"
-                    fill="none" stroke="#1E4E8F" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="280" cy="14" r="3" fill="#1E4E8F" />
+                    fill="none" stroke="#00635F" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="280" cy="14" r="3" fill="#00635F" />
             </svg>
           </div>
 
@@ -185,7 +185,7 @@ function ChartPreview() {
           {/* AI summary card */}
           <div style={{
             padding: 14, borderRadius: 10,
-            background: "linear-gradient(135deg, #EEF3FA 0%, #E6FAF8 100%)",
+            background: "linear-gradient(135deg, #EFF5F5 0%, #F1F2F6 100%)",
             border: "1px solid var(--brand-teal-100)",
           }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>

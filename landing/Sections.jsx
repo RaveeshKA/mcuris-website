@@ -208,7 +208,7 @@ function PreviewConsult() {
       <div style={{ padding: 18, display: "flex", flexDirection: "column", gap: 14 }}>
         <div style={{
           padding: 14, borderRadius: 10,
-          background: "linear-gradient(135deg, #EEF3FA 0%, #E6FAF8 100%)",
+          background: "linear-gradient(135deg, #EFF5F5 0%, #F1F2F6 100%)",
           border: "1px solid var(--brand-teal-100)",
         }}>
           <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
@@ -270,14 +270,14 @@ function PreviewTelemedicine() {
         {/* Main video */}
         <div style={{
           aspectRatio: "4 / 3", borderRadius: 10,
-          background: "linear-gradient(135deg, #0F2643 0%, #14335C 60%, #1E4E8F 100%)",
+          background: "linear-gradient(135deg, #00302E 0%, #00413E 60%, #00635F 100%)",
           position: "relative", overflow: "hidden",
         }}>
           {/* Stylized patient silhouette */}
           <svg viewBox="0 0 240 180" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
             <defs>
               <radialGradient id="tmGlow" cx="50%" cy="35%" r="55%">
-                <stop offset="0%" stopColor="rgba(46,196,182,0.35)" />
+                <stop offset="0%" stopColor="rgba(32,51,115,0.35)" />
                 <stop offset="100%" stopColor="rgba(15,38,67,0)" />
               </radialGradient>
             </defs>
@@ -324,7 +324,7 @@ function PreviewTelemedicine() {
           <div style={{
             position: "absolute", top: 10, right: 10,
             width: 56, height: 42, borderRadius: 6,
-            background: "linear-gradient(135deg, #2A6FA8 0%, #14335C 100%)",
+            background: "linear-gradient(135deg, #0E4D68 0%, #00413E 100%)",
             border: "2px solid rgba(255,255,255,0.18)",
             display: "flex", alignItems: "center", justifyContent: "center",
             color: "rgba(255,255,255,0.6)",
@@ -571,7 +571,7 @@ function PreviewDrive() {
         {/* Map sketch */}
         <div style={{
           height: 200, position: "relative",
-          background: "linear-gradient(135deg, #EEF3FA 0%, #E6FAF8 100%)",
+          background: "linear-gradient(135deg, #EFF5F5 0%, #F1F2F6 100%)",
           borderBottom: "1px solid var(--border-subtle)",
         }}>
           <svg viewBox="0 0 400 200" width="100%" height="100%" preserveAspectRatio="none" style={{ position: "absolute", inset: 0 }}>
@@ -582,7 +582,7 @@ function PreviewDrive() {
               <path d="M120 0 L120 200" />
               <path d="M260 0 L260 200" />
             </g>
-            <g stroke="#A6BFE0" strokeWidth="0.5" strokeDasharray="4 4">
+            <g stroke="#A7C9C8" strokeWidth="0.5" strokeDasharray="4 4">
               <path d="M0 50 L400 50" />
               <path d="M0 140 L400 140" />
               <path d="M120 0 L120 200" />
@@ -591,14 +591,14 @@ function PreviewDrive() {
             {/* Route */}
             <path
               d="M40 170 L40 140 L120 140 L120 50 L260 50 L260 30"
-              stroke="#1E4E8F" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"
+              stroke="#00635F" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"
             />
             {/* Start dot */}
-            <circle cx="40" cy="170" r="6" fill="#fff" stroke="#1E4E8F" strokeWidth="2" />
+            <circle cx="40" cy="170" r="6" fill="#fff" stroke="#00635F" strokeWidth="2" />
             {/* Ambulance marker */}
             <g transform="translate(120, 95)">
-              <circle r="14" fill="#2EC4B6" />
-              <circle r="20" fill="#2EC4B6" opacity="0.18">
+              <circle r="14" fill="#203373" />
+              <circle r="20" fill="#203373" opacity="0.18">
                 <animate attributeName="r" values="14;26;14" dur="2s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite" />
               </circle>
@@ -606,7 +606,7 @@ function PreviewDrive() {
             </g>
             {/* End - hospital */}
             <g transform="translate(260, 30)">
-              <rect x="-9" y="-9" width="18" height="18" rx="3" fill="#fff" stroke="#1E4E8F" strokeWidth="1.5" />
+              <rect x="-9" y="-9" width="18" height="18" rx="3" fill="#fff" stroke="#00635F" strokeWidth="1.5" />
               <path d="M-5 0 H5 M0 -5 V5" stroke="#D24856" strokeWidth="2" strokeLinecap="round" />
             </g>
           </svg>
@@ -796,20 +796,20 @@ function SecuritySection() {
           <div style={{
             position: "relative",
             padding: 32,
-            background: "radial-gradient(ellipse at 20% 0%, #1E4E8F 0%, #14335C 50%, #0F2643 100%)",
+            background: "radial-gradient(ellipse at 20% 0%, #00635F 0%, #00413E 50%, #00302E 100%)",
             borderRadius: 20,
             color: "#fff",
             overflow: "hidden",
           }}>
             {/* circuit trace pattern */}
             <svg aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.18 }} viewBox="0 0 400 400" fill="none">
-              <g stroke="#2EC4B6" strokeWidth="0.8">
+              <g stroke="#203373" strokeWidth="0.8">
                 <path d="M0 100 L80 100 L80 60 L160 60" />
-                <circle cx="160" cy="60" r="3" fill="#2EC4B6" />
+                <circle cx="160" cy="60" r="3" fill="#203373" />
                 <path d="M400 300 L320 300 L320 340 L240 340" />
-                <circle cx="240" cy="340" r="3" fill="#2EC4B6" />
+                <circle cx="240" cy="340" r="3" fill="#203373" />
                 <path d="M40 400 L40 250 L120 250 L120 200" />
-                <circle cx="120" cy="200" r="3" fill="#2EC4B6" />
+                <circle cx="120" cy="200" r="3" fill="#203373" />
               </g>
             </svg>
             <div style={{ position: "relative" }}>
@@ -826,7 +826,7 @@ function SecuritySection() {
                   { l: "BAA signed on day one",      v: "Standard",         tone: "ok" },
                 ].map(row => {
                   const tone = {
-                    ok:       { bg: "rgba(46,196,182,0.15)", color: "#8AE5DB" },
+                    ok:       { bg: "rgba(0,99,95,0.15)", color: "#A7C9C8" },
                     progress: { bg: "rgba(232,155,44,0.15)", color: "#F0C481" },
                     future:   { bg: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)" },
                     neutral:  { bg: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.85)" },
@@ -897,9 +897,9 @@ function AppsStrip() {
             onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border-subtle)"; e.currentTarget.style.boxShadow = "none"; }}>
               {/* Circuit corner */}
               <svg aria-hidden style={{ position: "absolute", top: 0, right: 0, width: 100, height: 100, opacity: 0.35, pointerEvents: "none" }} viewBox="0 0 100 100" fill="none">
-                <g stroke={p.accent === "teal" ? "#2EC4B6" : "#1E4E8F"} strokeWidth="0.7" opacity="0.6">
+                <g stroke={p.accent === "teal" ? "#203373" : "#00635F"} strokeWidth="0.7" opacity="0.6">
                   <path d="M100 25 L70 25 L70 55 L40 55" />
-                  <circle cx="40" cy="55" r="2.5" fill="#fff" stroke={p.accent === "teal" ? "#2EC4B6" : "#1E4E8F"} />
+                  <circle cx="40" cy="55" r="2.5" fill="#fff" stroke={p.accent === "teal" ? "#203373" : "#00635F"} />
                 </g>
               </svg>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -973,7 +973,7 @@ function CtaBanner() {
           position: "relative",
           padding: "64px 56px",
           borderRadius: 24,
-          background: "radial-gradient(ellipse at 20% 0%, #1E4E8F 0%, #14335C 50%, #0F2643 100%)",
+          background: "radial-gradient(ellipse at 20% 0%, #00635F 0%, #00413E 50%, #00302E 100%)",
           color: "#fff", overflow: "hidden",
           textAlign: "center",
         }} className="cta-banner">

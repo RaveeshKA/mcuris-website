@@ -118,7 +118,7 @@
               {tiers.map(t => (
                 <div key={t.name} style={{
                   padding: 32, borderRadius: 16,
-                  background: t.highlighted ? "radial-gradient(ellipse at 20% 0%, #1E4E8F 0%, #14335C 50%, #0F2643 100%)" : "#fff",
+                  background: t.highlighted ? "radial-gradient(ellipse at 20% 0%, #00635F 0%, #00413E 50%, #00302E 100%)" : "#fff",
                   color: t.highlighted ? "#fff" : "var(--fg-1)",
                   border: t.highlighted ? "1px solid var(--brand-deep-blue-700)" : "1px solid var(--border-subtle)",
                   boxShadow: t.highlighted ? "0 24px 48px -12px rgba(15,38,67,0.32)" : "none",
@@ -130,16 +130,16 @@
                       position: "absolute", top: 24, right: 24,
                       padding: "4px 10px", borderRadius: 999,
                       fontSize: 10, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase",
-                      background: "var(--brand-teal)", color: "#0F2643",
+                      background: "var(--brand-teal)", color: "#00302E",
                     }}>Most chosen</span>
                   )}
                   {t.highlighted && (
                     <svg aria-hidden style={{ position: "absolute", top: 0, right: 0, width: 180, height: 180, opacity: 0.16 }} viewBox="0 0 180 180" fill="none">
-                      <g stroke="#2EC4B6" strokeWidth="0.8">
+                      <g stroke="#203373" strokeWidth="0.8">
                         <path d="M180 40 L130 40 L130 80 L80 80" />
-                        <circle cx="80" cy="80" r="3" fill="#2EC4B6" />
+                        <circle cx="80" cy="80" r="3" fill="#203373" />
                         <path d="M180 120 L140 120 L140 150 L100 150" />
-                        <circle cx="100" cy="150" r="3" fill="#2EC4B6" />
+                        <circle cx="100" cy="150" r="3" fill="#203373" />
                       </g>
                     </svg>
                   )}

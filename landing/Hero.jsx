@@ -12,7 +12,7 @@ const { useState: useHeroS, useRef: useHeroR, useEffect: useHeroE } = React;
 // Spotlight component — a soft radial glow that follows the mouse.
 // On idle / mobile, it sits in a fixed position. Inspired by the
 // "Spotlight" pattern used on dark hero cards.
-function Spotlight({ size = 800, color = "rgba(46, 196, 182, 0.18)" }) {
+function Spotlight({ size = 800, color = "rgba(32, 51, 115, 0.18)" }) {
   const ref = useHeroR(null);
   const [pos, setPos] = useHeroS({ x: 0.4, y: 0.3 }); // fractional position
 
@@ -63,7 +63,7 @@ function Spotlight({ size = 800, color = "rgba(46, 196, 182, 0.18)" }) {
           position: "absolute",
           right: -200, bottom: -200,
           width: 560, height: 560,
-          background: "radial-gradient(circle at center, rgba(30, 78, 143, 0.35) 0%, transparent 60%)",
+          background: "radial-gradient(circle at center, rgba(0, 99, 95, 0.35) 0%, transparent 60%)",
           pointerEvents: "none"
         }} />
       
@@ -84,7 +84,7 @@ function HeroShell({ children, variant }) {
             position: "relative",
             borderRadius: 24,
             overflow: "hidden",
-            background: "radial-gradient(ellipse at 20% 0%, #1E4E8F 0%, #14335C 50%, #0F2643 100%)",
+            background: "radial-gradient(ellipse at 20% 0%, #00635F 0%, #00413E 50%, #00302E 100%)",
             border: "1px solid rgba(255,255,255,0.06)",
             boxShadow: "0 32px 64px -16px rgba(10,26,45,0.45)"
           }}>
@@ -94,11 +94,11 @@ function HeroShell({ children, variant }) {
               position: "absolute", top: 0, right: 0, width: 520, height: 320,
               opacity: 0.18, pointerEvents: "none"
             }} viewBox="0 0 520 320" fill="none">
-              <g stroke="#2EC4B6" strokeWidth="1">
+              <g stroke="#203373" strokeWidth="1">
                 <path d="M520 60 L400 60 L400 110 L300 110" strokeLinecap="round" />
-                <circle cx="300" cy="110" r="4" fill="#0A1A2D" />
+                <circle cx="300" cy="110" r="4" fill="#00201F" />
                 <path d="M520 200 L460 200 L460 250 L380 250" strokeLinecap="round" />
-                <circle cx="380" cy="250" r="4" fill="#0A1A2D" />
+                <circle cx="380" cy="250" r="4" fill="#00201F" />
               </g>
             </svg>
             <div style={{ position: "relative", padding: "72px 56px", color: "rgb(14, 20, 28)", opacity: "1" }} className="hero-eco-inner">
@@ -125,13 +125,13 @@ function HeroShell({ children, variant }) {
         position: "absolute", top: -40, right: -40, width: 480, height: 480,
         opacity: variant === "minimal" ? 0.4 : 0.55, pointerEvents: "none"
       }} viewBox="0 0 400 400" fill="none">
-        <g stroke="#2EC4B6" strokeWidth="1" opacity="0.45">
+        <g stroke="#203373" strokeWidth="1" opacity="0.45">
           <path d="M400 80 L320 80 L320 160 L240 160" strokeLinecap="round" />
           <circle cx="240" cy="160" r="4" fill="#fff" />
           <path d="M400 200 L360 200 L360 240 L300 240" strokeLinecap="round" />
           <circle cx="300" cy="240" r="4" fill="#fff" />
         </g>
-        <g stroke="#1E4E8F" strokeWidth="1" opacity="0.35">
+        <g stroke="#00635F" strokeWidth="1" opacity="0.35">
           <path d="M400 320 L340 320 L340 280 L280 280" strokeLinecap="round" />
           <circle cx="280" cy="280" r="4" fill="#fff" />
         </g>
@@ -212,14 +212,14 @@ function HeroHeadlineDark() {
         fontFamily: "var(--font-display)", fontWeight: 800,
         fontSize: "clamp(36px, 5.4vw, 68px)", lineHeight: 1.03,
         letterSpacing: "-0.025em",
-        background: "linear-gradient(180deg, #FFFFFF 0%, #C2F2EC 55%, #56D6C8 100%)",
+        background: "linear-gradient(180deg, #FFFFFF 0%, #DBDEE9 55%, #7C87AD 100%)",
         WebkitBackgroundClip: "text", backgroundClip: "text",
         color: "transparent",
         textWrap: "balance"
       }}>
         Clinical software,{" "}
         <span style={{
-          background: "linear-gradient(95deg, #2EC4B6 0%, #56D6C8 100%)",
+          background: "linear-gradient(95deg, #203373 0%, #7C87AD 100%)",
           WebkitBackgroundClip: "text", backgroundClip: "text",
           color: "transparent"
         }}>
@@ -238,12 +238,12 @@ function HeroHeadlineDark() {
         <a href="contact.html" style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           padding: "15px 24px", borderRadius: 10,
-          background: "var(--brand-teal)", color: "#0A1A2D",
+          background: "var(--brand-teal)", color: "#00201F",
           fontSize: 15, fontWeight: 700, fontFamily: "var(--font-sans)",
           cursor: "pointer", transition: "all 160ms var(--ease-standard)",
-          boxShadow: "0 8px 24px -6px rgba(46,196,182,0.45)"
+          boxShadow: "0 8px 24px -6px rgba(32,51,115,0.45)"
         }}
-        onMouseEnter={(e) => {e.currentTarget.style.background = "#56D6C8";e.currentTarget.style.transform = "translateY(-1px)";}}
+        onMouseEnter={(e) => {e.currentTarget.style.background = "#7C87AD";e.currentTarget.style.transform = "translateY(-1px)";}}
         onMouseLeave={(e) => {e.currentTarget.style.background = "var(--brand-teal)";e.currentTarget.style.transform = "translateY(0)";}}>
           
           Request a demo
